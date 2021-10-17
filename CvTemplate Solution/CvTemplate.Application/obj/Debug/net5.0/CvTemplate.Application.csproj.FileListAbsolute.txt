@@ -1,0 +1,36 @@
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Application.deps.json
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Application.dll
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\ref\CvTemplate.Application.dll
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Application.pdb
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Domain.dll
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Domain.pdb
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.AssemblyInfo.cs
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.csproj.CopyComplete
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.dll
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\ref\CvTemplate.Application.dll
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.pdb
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Resources.dll
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Resources.pdb
+C:\Users\HP\source\repos\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\en\CvTemplate.Resources.resources.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Application.deps.json
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Application.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\ref\CvTemplate.Application.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Application.pdb
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Domain.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Resources.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Domain.pdb
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Resources.pdb
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\en\CvTemplate.Resources.resources.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.csproj.AssemblyReference.cache
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.AssemblyInfoInputs.cache
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.AssemblyInfo.cs
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.csproj.CoreCompileInputs.cache
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.csproj.CopyComplete
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\ref\CvTemplate.Application.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.pdb
