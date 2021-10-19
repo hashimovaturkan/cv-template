@@ -10,8 +10,8 @@ namespace CvTemplate.Domain.Models.Entities
     {
         public string Name { get; set; }
         public string ShortDescription { get; set; }
-        public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public int JobCategoryId { get; set; }
+        public virtual JobCategory JobCategory { get; set; }
         public string Description { get; set; }
         public string ImgUrl { get; set; }
     }

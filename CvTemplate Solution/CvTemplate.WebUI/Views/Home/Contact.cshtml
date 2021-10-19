@@ -1,4 +1,4 @@
-﻿@model PersonalSettingContactPostViewModel
+﻿@model ContactViewModel
 @{
     ViewData["Title"] = "Contact";
 }
@@ -17,7 +17,7 @@
                         <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-xlarge dark-text">
                             <div class="ib-icon"> <i class="fa fa-mobile text-primary"></i> </div>
                             <div class="ib-info text-dark">
-                                <p>@Model?.PersonalSetting?.Phone</p>
+                                <p>@Model?.Phone</p>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-large">
                             <div class="ib-icon"> <i class="fa fa-map-marker text-primary"></i> </div>
                             <div class="ib-info text-dark">
-                                <p>@Model?.PersonalSetting?.Location</p>
+                                <p>@Model?.Location</p>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="icon-box ib-style-1 ib-circle ib-bordered ib-bordered-white ib-bordered-thin ib-medium ib-text-alt i-large">
                             <div class="ib-icon"> <i class="fa fa-envelope-o text-primary"></i> </div>
                             <div class="ib-info text-dark">
-                                <p class="no-margin-bottom"><a href="#." class="text-white">support@yourcompany.com</a></p>
+                                <p class="no-margin-bottom"><a href="#." class="text-white">@Model?.MainEmail</a></p>
                             </div>
                         </div>
                     </div>
@@ -60,24 +60,24 @@
                     <div id="contact_message_1" class="success-msg"> <i class="fa fa-paper-plane-o"></i>Thank You. Your Message has been Submitted</div>
 
                     <!-- FORM -->
-                    <form  id="contact" class="contact-form" method="post" >
+                    <form  id="contactfrm" class="contact-form" method="post" asp-controller="Home" asp-action="Contact">
                         <ul class="row">
                             <li class="col-sm-4">
                                 <label>
-                                    <input type="email" class="form-control" asp-for="ContactPost.Email" placeholder="@ContactResource.Email">
-                                    <span class="validation-text" asp-validation-for="ContactPost.Email"></span>
+                                    <input type="email" class="form-control" asp-for="Email" placeholder="@ContactResource.Email">
+                                    <span class="validation-text" asp-validation-for="Email"></span>
                                 </label>
                             </li>
                             <li class="col-sm-4">
                                 <label>
-                                    <input type="text" class="form-control" asp-for="ContactPost.Name" placeholder="@ContactResource.Name">
-                                    <span class="validation-text" asp-validation-for="ContactPost.Name"></span>
+                                    <input type="text" class="form-control" asp-for="Name" placeholder="@ContactResource.Name">
+                                    <span class="validation-text" asp-validation-for="Name"></span>
                                 </label>
                             </li>
                             <li class="col-sm-12">
                                 <label>
-                                    <textarea class="form-control" asp-for="ContactPost.Comment" rows="5" placeholder="@ContactResource.Content"></textarea>
-                                    <span class="validation-text" asp-validation-for="ContactPost.Comment"></span>
+                                    <textarea class="form-control" asp-for="Comment" rows="5" placeholder="@ContactResource.Content"></textarea>
+                                    <span class="validation-text" asp-validation-for="Comment"></span>
                                 </label>
                             </li>
                             <li class="col-sm-12">
@@ -95,13 +95,15 @@
 @section addjs{ 
     <script>
          $(document).ready(function () {
-                $("#contact").submit(function (e) {
+                $("#contactfrm").submit(function (e) {
                     e.preventDefault();
                     console.log(e.currentTarget)
+
                     if (!$(e.currentTarget).valid())
-                        return;
+                    return;
 
                     const formData = new FormData(e.currentTarget);
+
 
                     $.ajax({
                         url: '@Url.Action("Contact","Home")',

@@ -24,7 +24,6 @@ namespace CvTemplate.Domain.Models.DataContexts
 
 
         public DbSet<BlogPost> BlogPosts { get; set; }
-        public DbSet<Category> Categories { get; set; }
         //public DbSet<BlogImage> BlogImages { get; set; }
         public DbSet<AcademicBackGround> AcademicBackGrounds { get; set; }
         public DbSet<Attachment> Attachments { get; set; }
@@ -36,8 +35,19 @@ namespace CvTemplate.Domain.Models.DataContexts
         public DbSet<Skill> Skills { get; set; }
         public DbSet<SocialProfile> SocialProfiles { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
+        public DbSet<Bio> Bios { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<JobCategory> JobCategories { get; set; }
+        public DbSet<Resume> Resumes { get; set; }
 
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS; Initial Catalog=CvTemplate; User Id=sa; Password=query;");
+        //    }
 
+        //}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

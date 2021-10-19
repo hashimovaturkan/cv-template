@@ -34,7 +34,7 @@ namespace CvTemplate.WebUI.Controllers
             if(blog != null)
                 return View(blog);
 
-            ViewBag.Category = db.Categories.FirstOrDefault(b => b.Id == blog.CategoryId && b.DeletedByUserId == null).Name;
+            ViewBag.Category = db.BlogCategories.FirstOrDefault(b => b.Id == blog.BlogCategoryId && b.DeletedByUserId == null).Name;
 
             return NotFound();
         }

@@ -12,8 +12,8 @@ namespace CvTemplate.Domain.Models.Entities
         public string Description { get; set; }
         public int? Level { get; set; }
         public bool IsBar { get; set; }
-        public int? CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public int? JobCategoryId { get; set; }
+        public virtual JobCategory JobCategory { get; set; }
 
 
     }

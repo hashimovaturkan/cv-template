@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CvTemplate.Domain.Models.Entities.ViewModels
 {
-    public class PersonalSettingContactPostViewModel
+    public class ProjectJobCategoryViewModel
     {
-        public PersonalSetting PersonalSetting { get; set; }
-        public ContactPost ContactPost { get; set; }
+        public IEnumerable<JobCategory> JobCategories { get; set; }
+        public IEnumerable<Project> Projects { get; set; }
     }
 }

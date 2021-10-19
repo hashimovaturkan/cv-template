@@ -13,8 +13,8 @@ namespace CvTemplate.Domain.Models.Entities
         public string Description { get; set; }
         public DateTime? PublishedDate { get; set; }
         public string ImgUrl { get; set; }
-        public int? CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public int BlogCategoryId { get; set; }
+        public virtual BlogCategory BlogCategory { get; set; }
         //public virtual ICollection<BlogImage> Images { get; set; }
     }
 }

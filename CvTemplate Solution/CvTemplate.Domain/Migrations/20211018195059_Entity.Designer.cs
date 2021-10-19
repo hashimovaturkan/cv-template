@@ -4,14 +4,16 @@ using CvTemplate.Domain.Models.DataContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CvTemplate.Domain.Migrations
 {
     [DbContext(typeof(CvTemplateDbContext))]
-    partial class CvTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211018195059_Entity")]
+    partial class Entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,7 +213,7 @@ namespace CvTemplate.Domain.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrderBy")
+                    b.Property<int>("OrderBy")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

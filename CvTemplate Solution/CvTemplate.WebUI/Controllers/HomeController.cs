@@ -1,5 +1,6 @@
 ﻿using CvTemplate.Domain.Models.DataContexts;
 using CvTemplate.Domain.Models.Entities;
+using CvTemplate.Domain.Models.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -23,7 +24,13 @@ namespace CvTemplate.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Contact()
         {
-            var data =await db.PersonalSettings.FirstOrDefaultAsync(c => c.DeletedByUserId == null);
+            var personalSetting =await db.PersonalSettings.FirstOrDefaultAsync(c => c.DeletedByUserId == null);
+            var data = new ContactViewModel() {
+                Location = personalSetting.Location,
+                Phone = personalSetting.Phone,
+                MainEmail = personalSetting.Email
+            };
+
             return View(data);
         }
 
@@ -67,9 +74,12 @@ namespace CvTemplate.WebUI.Controllers
             return View();
         }
 
-        public IActionResult Portfolio()
+        public async Task<IActionResult> Portfolio()
         {
-            return View();
+            var model =  new ProjectJobCategoryViewModel();
+            model.Projects =await db.Projects.Where(p=>p.DeletedByUserId == null).ToListAsync();
+            model.JobCategories = await db.JobCategories.Where(p => p.DeletedByUserId == null).ToListAsync();
+            return View(model);
         }
 
 
