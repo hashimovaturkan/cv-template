@@ -19,7 +19,7 @@ namespace CvTemplate.Domain.Models.Entities
         public string Fax { get; set; }
         public string Website { get; set; }
         public string Email { get; set; }
-        public int CvTemplateUserId { get; set; }
+        public int? CvTemplateUserId { get; set; }
         public virtual CvTemplateUser CvTemplateUser { get; set; }
     }
 }

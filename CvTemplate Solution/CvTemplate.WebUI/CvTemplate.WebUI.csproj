@@ -15,6 +15,7 @@
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Views\" />
     <Folder Include="wwwroot\libs\" />
+    <Folder Include="wwwroot\uploads\files\" />
   </ItemGroup>
 
   <ItemGroup>

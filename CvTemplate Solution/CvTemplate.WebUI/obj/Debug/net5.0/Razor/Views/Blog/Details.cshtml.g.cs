@@ -47,8 +47,15 @@ using CvTemplate.Domain.Models.Entities.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Views\_ViewImports.cshtml"
+using CvTemplate.Domain.Models.Entities.Enums;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9cbc79fd57fc4bacec93a9b4ed8e9ddedcfd223a", @"/Views/Blog/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5b231b8bae2d7c1a782889d0bff47c96d5c12fc3", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"817b9ecdefa68322c0c37b8446c2a47f602850db", @"/Views/_ViewImports.cshtml")]
     public class Views_Blog_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<BlogPost>
     {
         #line hidden
@@ -245,7 +252,7 @@ WriteAttributeValue("", 361, Model.ImgUrl, 361, 13, false);
                         <h4>Post to Reply</h4>
                     </div>
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cbc79fd57fc4bacec93a9b4ed8e9ddedcfd223a15752", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cbc79fd57fc4bacec93a9b4ed8e9ddedcfd223a15990", async() => {
                 WriteLiteral("\r\n                        <ul class=\"row\">\r\n                            <li class=\"col-sm-4\">\r\n                                <label>\r\n                                    *NAME\r\n                                    <input class=\"form-control\" type=\"text\"");
                 BeginWriteAttribute("placeholder", " placeholder=\"", 9712, "\"", 9726, 0);
                 EndWriteAttribute();

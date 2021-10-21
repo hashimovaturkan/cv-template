@@ -64,14 +64,47 @@ namespace CvTemplate.WebUI.Controllers
             });
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            return View();
+            var personalSettings = await db.PersonalSettings.FirstOrDefaultAsync(p => p.DeletedByUserId == null);
+            var bio = await db.Bios.FirstOrDefaultAsync(p => p.DeletedByUserId == null);
+            var services = await db.Services.Where(p => p.DeletedByUserId == null).ToListAsync();
+            var skills = await db.Skills.Where(p => p.DeletedByUserId == null).ToListAsync();
+            
+
+            var data = new AboutViewModel()
+            {
+                PersonalSetting = personalSettings,
+                Services = services,
+                Skills = skills,
+                Bio = bio
+
+            };
+
+            return View(data);
         }
 
-        public IActionResult Resume()
+        public async Task<IActionResult> Resume()
         {
-            return View();
+            var academicBackGrounds= await db.AcademicBackGrounds.Where(p => p.DeletedByUserId == null).ToListAsync();
+            var experiences = await db.Experiences.Where(p => p.DeletedByUserId == null).ToListAsync();
+            var skills = await db.Skills.Where(p => p.DeletedByUserId == null).OrderBy(n=> n.IsBar).ToListAsync();
+            var jobCategories = await (from jc in db.JobCategories 
+                                join s in db.Skills on jc.Id equals s.JobCategoryId
+                                select jc)
+                                .ToListAsync();
+            var bio = await db.Bios.FirstOrDefaultAsync(p => p.DeletedByUserId == null);
+
+            var data = new ResumeViewModel() {
+                AcademicBackGrounds = academicBackGrounds,
+                Experiences = experiences,
+                Skills = skills,
+                Bio = bio,
+                JobCategories = jobCategories.GroupBy(p => p.Id).Select(g=>g.First()).ToList()
+
+            };
+
+            return View(data);
         }
 
         public async Task<IActionResult> Portfolio()

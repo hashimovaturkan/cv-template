@@ -4,14 +4,16 @@ using CvTemplate.Domain.Models.DataContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CvTemplate.Domain.Migrations
 {
     [DbContext(typeof(CvTemplateDbContext))]
-    partial class CvTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211019204559_PersonalSettingUpdate")]
+    partial class PersonalSettingUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,6 +58,9 @@ namespace CvTemplate.Domain.Migrations
                     b.Property<string>("Qualification")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ResumeId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartingDate")
                         .HasColumnType("datetime2");
 
@@ -63,6 +68,8 @@ namespace CvTemplate.Domain.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("AcademicBackGrounds");
                 });
@@ -340,10 +347,15 @@ namespace CvTemplate.Domain.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ResumeId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartingDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Experiences");
                 });
@@ -678,6 +690,35 @@ namespace CvTemplate.Domain.Migrations
                     b.ToTable("Projects");
                 });
 
+            modelBuilder.Entity("CvTemplate.Domain.Models.Entities.Resume", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("BioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BioId");
+
+                    b.ToTable("Resumes");
+                });
+
             modelBuilder.Entity("CvTemplate.Domain.Models.Entities.Service", b =>
                 {
                     b.Property<int>("Id")
@@ -745,9 +786,14 @@ namespace CvTemplate.Domain.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ResumeId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("JobCategoryId");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Skills");
                 });
@@ -782,6 +828,13 @@ namespace CvTemplate.Domain.Migrations
                     b.ToTable("SocialProfiles");
                 });
 
+            modelBuilder.Entity("CvTemplate.Domain.Models.Entities.AcademicBackGround", b =>
+                {
+                    b.HasOne("CvTemplate.Domain.Models.Entities.Resume", null)
+                        .WithMany("AcademicBackGrounds")
+                        .HasForeignKey("ResumeId");
+                });
+
             modelBuilder.Entity("CvTemplate.Domain.Models.Entities.BlogPost", b =>
                 {
                     b.HasOne("CvTemplate.Domain.Models.Entities.BlogCategory", "BlogCategory")
@@ -791,6 +844,13 @@ namespace CvTemplate.Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("BlogCategory");
+                });
+
+            modelBuilder.Entity("CvTemplate.Domain.Models.Entities.Experience", b =>
+                {
+                    b.HasOne("CvTemplate.Domain.Models.Entities.Resume", null)
+                        .WithMany("Experiences")
+                        .HasForeignKey("ResumeId");
                 });
 
             modelBuilder.Entity("CvTemplate.Domain.Models.Entities.Membership.CvTemplateRoleClaim", b =>
@@ -864,13 +924,35 @@ namespace CvTemplate.Domain.Migrations
                     b.Navigation("JobCategory");
                 });
 
+            modelBuilder.Entity("CvTemplate.Domain.Models.Entities.Resume", b =>
+                {
+                    b.HasOne("CvTemplate.Domain.Models.Entities.Bio", "Bio")
+                        .WithMany()
+                        .HasForeignKey("BioId");
+
+                    b.Navigation("Bio");
+                });
+
             modelBuilder.Entity("CvTemplate.Domain.Models.Entities.Skill", b =>
                 {
                     b.HasOne("CvTemplate.Domain.Models.Entities.JobCategory", "JobCategory")
                         .WithMany()
                         .HasForeignKey("JobCategoryId");
 
+                    b.HasOne("CvTemplate.Domain.Models.Entities.Resume", null)
+                        .WithMany("Skills")
+                        .HasForeignKey("ResumeId");
+
                     b.Navigation("JobCategory");
+                });
+
+            modelBuilder.Entity("CvTemplate.Domain.Models.Entities.Resume", b =>
+                {
+                    b.Navigation("AcademicBackGrounds");
+
+                    b.Navigation("Experiences");
+
+                    b.Navigation("Skills");
                 });
 #pragma warning restore 612, 618
         }

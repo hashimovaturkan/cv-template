@@ -1,4 +1,5 @@
 ﻿using CvTemplate.Domain.Models.Entities;
+using CvTemplate.Domain.Models.Entities.Enums;
 using CvTemplate.Domain.Models.Entities.Membership;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -38,7 +39,6 @@ namespace CvTemplate.Domain.Models.DataContexts
         public DbSet<Bio> Bios { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
-        public DbSet<Resume> Resumes { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

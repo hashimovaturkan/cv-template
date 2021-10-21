@@ -8,6 +8,7 @@ namespace CvTemplate.Domain.Models.Entities
 {
     public class Attachment:BaseEntity
     {
+        //bir setirde elave ele uje onda uploadsa her defe file elave eliyessen onun urlini saxla(admin terefde file add etme)
         public string AttachmentUrl { get; set; }
         public string Name { get; set; }
         public string IconUrl { get; set; }

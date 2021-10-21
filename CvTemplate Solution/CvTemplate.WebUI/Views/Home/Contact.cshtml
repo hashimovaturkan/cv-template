@@ -60,7 +60,7 @@
                     <div id="contact_message_1" class="success-msg"> <i class="fa fa-paper-plane-o"></i>Thank You. Your Message has been Submitted</div>
 
                     <!-- FORM -->
-                    <form  id="contactfrm" class="contact-form" method="post" asp-controller="Home" asp-action="Contact">
+                    <form  id="contactfrm-main" class="contact-form" method="post" asp-controller="Home" asp-action="Contact">
                         <ul class="row">
                             <li class="col-sm-4">
                                 <label>
@@ -95,7 +95,7 @@
 @section addjs{ 
     <script>
          $(document).ready(function () {
-                $("#contactfrm").submit(function (e) {
+                $("#contactfrm-main").submit(function (e) {
                     e.preventDefault();
                     console.log(e.currentTarget)
 

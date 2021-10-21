@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CvTemplate.Domain.Models.Entities.ViewModels
 {
-    class About
+    public class SidebarViewModel
     {
         public PersonalSetting PersonalSetting { get; set; }
-        public Bio Bio { get; set; }
-        public IEnumerable<Service> Services { get; set; }
-        public IEnumerable<Skill> Skills { get; set; }
+        public IEnumerable<Attachment> Attachments { get; set; }
+        public IEnumerable<SocialProfile> SocialProfiles { get; set; }
+        public ContactPost ContactPost { get; set; }
     }
 }
