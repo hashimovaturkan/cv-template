@@ -1,5 +1,5 @@
 ﻿using CvTemplate.Domain.Models.DataContexts;
-using CvTemplate.Domain.Models.Entities.ViewModels;
+using CvTemplate.Domain.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;

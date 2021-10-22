@@ -251,7 +251,7 @@
         if (result != null) {
             $(".nav-link").each(function (index, element) {
                 $(this).parent().removeClass("active");
-                if ($(this).attr("aria-controls") == result[3] || $(this).attr("aria-controls") == result[2]) {
+                if ($(this).attr("aria-controls") == result[3] || result[2].includes($(this).attr("aria-controls"))) {
                     $(this).parent().addClass("active");
                 }
             })
@@ -270,7 +270,6 @@
     //contact post
         $(document).ready(function () {
              $("#contactfrm").submit(function (e) {
-                 console.log("ana")
                     e.preventDefault();
                     console.log(e.currentTarget)
 

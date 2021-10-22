@@ -34,3 +34,6 @@ E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.App
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\ref\CvTemplate.Application.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.pdb
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Application.runtimeconfig.json
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\bin\Debug\net5.0\CvTemplate.Application.runtimeconfig.dev.json
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Application\obj\Debug\net5.0\CvTemplate.Application.genruntimeconfig.cache

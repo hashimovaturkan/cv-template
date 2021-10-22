@@ -1,5 +1,5 @@
 ﻿using CvTemplate.Domain.Models.Entities;
-using CvTemplate.Domain.Models.Entities.Enums;
+using CvTemplate.Domain.Models.Enums;
 using CvTemplate.Domain.Models.Entities.Membership;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

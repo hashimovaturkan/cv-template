@@ -5,15 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CvTemplate.Application\CvTemplate.Application.csproj" />
-    <ProjectReference Include="..\CvTemplate.Domain\CvTemplate.Domain.csproj" />
-    <ProjectReference Include="..\CvTemplate.Resources\CvTemplate.Resources.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\" />
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Views\" />
     <Folder Include="wwwroot\libs\" />
     <Folder Include="wwwroot\uploads\files\" />
   </ItemGroup>
@@ -31,6 +22,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CvTemplate.Application\CvTemplate.Application.csproj" />
+    <ProjectReference Include="..\CvTemplate.Domain\CvTemplate.Domain.csproj" />
+    <ProjectReference Include="..\CvTemplate.Resources\CvTemplate.Resources.csproj" />
   </ItemGroup>
 
 </Project>

@@ -20,7 +20,6 @@ E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Res
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\bin\Debug\net5.0\ref\CvTemplate.Resources.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\bin\Debug\net5.0\CvTemplate.Resources.pdb
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\bin\Debug\net5.0\en\CvTemplate.Resources.resources.dll
-E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\obj\Debug\net5.0\CvTemplate.Resources.csproj.AssemblyReference.cache
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\obj\Debug\net5.0\CvTemplate.Resources.User.Contact.ContactResource.resources
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\obj\Debug\net5.0\CvTemplate.Resources.User.Contact.ContactResource.en.resources
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\obj\Debug\net5.0\CvTemplate.Resources.csproj.GenerateResource.cache
@@ -32,3 +31,4 @@ E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Res
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\obj\Debug\net5.0\CvTemplate.Resources.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\obj\Debug\net5.0\ref\CvTemplate.Resources.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\obj\Debug\net5.0\CvTemplate.Resources.pdb
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Resources\obj\Debug\net5.0\CvTemplate.Resources.csproj.AssemblyReference.cache
