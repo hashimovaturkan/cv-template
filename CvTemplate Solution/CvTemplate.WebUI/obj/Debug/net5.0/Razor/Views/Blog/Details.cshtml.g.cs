@@ -41,14 +41,28 @@ using CvTemplate.Domain.Models.Enums;
 #line hidden
 #nullable disable
 #nullable restore
+#line 8 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Views\_ViewImports.cshtml"
+using CvTemplate.Application.Core.Infrastructure;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 10 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Views\_ViewImports.cshtml"
+using CvTemplate.Domain.Models.FormModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Views\_ViewImports.cshtml"
 using Resources;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9cbc79fd57fc4bacec93a9b4ed8e9ddedcfd223a", @"/Views/Blog/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7fae1d61a5ce34e74a448e9ef17a1d4a8720bccf", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"92ea3f6ea9d0387d7afd5c355a53175b8fdc7dc5", @"/Views/_ViewImports.cshtml")]
     public class Views_Blog_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<BlogPost>
     {
         #line hidden
@@ -245,7 +259,7 @@ WriteAttributeValue("", 361, Model.ImgUrl, 361, 13, false);
                         <h4>Post to Reply</h4>
                     </div>
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cbc79fd57fc4bacec93a9b4ed8e9ddedcfd223a15736", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9cbc79fd57fc4bacec93a9b4ed8e9ddedcfd223a16210", async() => {
                 WriteLiteral("\r\n                        <ul class=\"row\">\r\n                            <li class=\"col-sm-4\">\r\n                                <label>\r\n                                    *NAME\r\n                                    <input class=\"form-control\" type=\"text\"");
                 BeginWriteAttribute("placeholder", " placeholder=\"", 9712, "\"", 9726, 0);
                 EndWriteAttribute();

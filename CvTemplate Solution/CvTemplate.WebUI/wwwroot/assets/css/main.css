@@ -1816,9 +1816,132 @@ select.mobile-device{position:absolute!important;top:0;left:0;display:block!impo
 .color-switcher.position .theme-colours {
 	box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+div#simple-account-dropdown {
+	position: relative;
+	font-size: 14px;
+	color: #fff;
+}
+
+	div#simple-account-dropdown > .account {
+		text-align: center;
+		cursor: pointer;
+		padding: 5px 10px;
+		-webkit-transition: 0.1s ease-in;
+		-moz-transition: 0.1s ease-in;
+		-o-transition: 0.1s ease-in;
+		transition: 0.1s ease-in;
+		color: black !important;
+	}
+
+		div#simple-account-dropdown > .account:hover {
+			background: white;
+			
+		}
+
+		div#simple-account-dropdown > .account:active, div#simple-account-dropdown > .account.active {
+			background: white;
+		}
+
+		div#simple-account-dropdown > .account > span {
+			margin: 0 10px;
+		}
+
+		div#simple-account-dropdown > .account > img {
+			vertical-align: middle;
+		}
+
+	div#simple-account-dropdown > .dropdown {
+		position: absolute;
+		width: 190px;
+		top: 80px;
+		left: 50%;
+		margin-left: -95px;
+		z-index:99;
+		color:wheat !important;
+	}
+
+		div#simple-account-dropdown > .dropdown::before {
+			content: '';
+			display: block;
+			position: absolute;
+			border: 10px solid #404a52;
+			border-left: 10px solid rgba(255, 255, 255, 0);
+			border-right: 10px solid rgba(255, 255, 255, 0);
+			border-top: 0px solid rgba(255, 255, 255, 0);
+			top: -10px;
+			left: 50%;
+			margin-left: -10px;
+		}
+
+		div#simple-account-dropdown > .dropdown > ul {
+			display: block;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			overflow: hidden;
+			background: #404a52;
+		}
+
+			div#simple-account-dropdown > .dropdown > ul > li a {
+				display: block;
+				padding: 10px 30px;
+				font-size: 13px;
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+				border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+				color: wheat;
+			}
+
+				div#simple-account-dropdown > .dropdown > ul > li a:hover {
+					margin: 0;
+					padding: 10px 30px;
+					background: #48535c;
+					border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+				}
+
+				div#simple-account-dropdown > .dropdown > ul > li a > img {
+					vertical-align: middle;
+					margin-right: 10px;
+				}
+
+			div#simple-account-dropdown > .dropdown > ul > li:first-child a {
+				border-top: none;
+			}
+
+			div#simple-account-dropdown > .dropdown > ul > li:last-child a {
+				border-bottom: none;
+			}
+
+h4 {
+	color: #c5c5c5;
+	margin-top: 50px;
+}
 
 
 
+ul#simple-account-dropdown-freebie {
+	list-style: none;
+	margin: 0 auto;
+	padding: 0;
+}
+
+	ul#simple-account-dropdown-freebie > li {
+		float: left;
+		margin-right: 20px;
+		margin-bottom: 20px;
+		background: white;
+		padding: 10px 10px;
+	}
+
+		ul#simple-account-dropdown-freebie > li:last-child {
+			margin-right: 0;
+		}
+
+		ul#simple-account-dropdown-freebie > li > span {
+			margin-bottom: 10px;
+		}
 
 
 

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CvTemplate.Application.Modules.Admin.PersonalSettingsModule
 {
-    class PersonalSettingCreateCommand : IRequest<long>
+    public class PersonalSettingCreateCommand : IRequest<int>
     {
         public string Name { get; set; }
         public int Age { get; set; }
@@ -26,18 +26,16 @@ namespace CvTemplate.Application.Modules.Admin.PersonalSettingsModule
         public string Website { get; set; }
         public string Email { get; set; }
         public int? CvTemplateUserId { get; set; }
-        public class PersonalSettingCreateCommandHandler : IRequestHandler<PersonalSettingCreateCommand, long>
+        public class PersonalSettingCreateCommandHandler : IRequestHandler<PersonalSettingCreateCommand, int>
         {
             readonly CvTemplateDbContext db;
             readonly IActionContextAccessor ctx;
-            readonly IWebHostEnvironment env;
-            public PersonalSettingCreateCommandHandler(CvTemplateDbContext db, IActionContextAccessor ctx, IWebHostEnvironment env)
+            public PersonalSettingCreateCommandHandler(CvTemplateDbContext db, IActionContextAccessor ctx)
             {
-                this.env = env;
                 this.ctx = ctx;
                 this.db = db;
             }
-            public async Task<long> Handle(PersonalSettingCreateCommand request, CancellationToken cancellationToken)
+            public async Task<int> Handle(PersonalSettingCreateCommand request, CancellationToken cancellationToken)
             {
                 if (ctx.IsModelStateValid())
                 {

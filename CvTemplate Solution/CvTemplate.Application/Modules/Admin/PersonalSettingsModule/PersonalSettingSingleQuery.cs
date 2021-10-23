@@ -1,12 +1,35 @@
-﻿using System;
+﻿using CvTemplate.Domain.Models.DataContexts;
+using CvTemplate.Domain.Models.Entities;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CvTemplate.Application.Modules.Admin.PersonalSettingsModule
 {
-    class PersonalSettingSingleQuery
+    public class PersonalSettingSingleQuery : IRequest<PersonalSetting>
     {
+        public long? Id { get; set; }
+
+        public class SizeSingleQueryHandler : IRequestHandler<PersonalSettingSingleQuery, PersonalSetting>
+        {
+            readonly CvTemplateDbContext db;
+            public SizeSingleQueryHandler(CvTemplateDbContext db)
+            {
+                this.db = db;
+            }
+            public async Task<PersonalSetting> Handle(PersonalSettingSingleQuery request, CancellationToken cancellationToken)
+            {
+                if (request.Id == null && request.Id <= 0)
+                    return null;
+
+                var model = db.PersonalSettings.FirstOrDefault(s => s.Id == request.Id && s.DeletedDate == null);
+
+                return model;
+            }
+        }
     }
 }

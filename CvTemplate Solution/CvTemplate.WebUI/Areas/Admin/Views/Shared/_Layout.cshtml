@@ -13,6 +13,8 @@
     <link href="~/admin/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link href="~/admin/css/style.css" rel="stylesheet">
 
+    <link href="~/libs/toastr.js/toastr.css" rel="stylesheet" />
+    @RenderSection("addcss", required: false)
 
 
 </head>
@@ -42,9 +44,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="./images/logo.png" alt="">
-                <img class="logo-compact" src="./images/logo-text.png" alt="">
-                <img class="brand-title" src="./images/logo-text.png" alt="">
+                <img class="logo-abbr" src="/uploads/images/logo.png" alt="">
+                <img class="logo-compact" src="/uploads/images/logo-text.png" alt="">
+                <img class="brand-title" src="/uploads/images/logo-text.png" alt="">
             </a>
 
             <div class="nav-control">
@@ -176,13 +178,14 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Main Menu</li>
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <a aria-expanded="false" asp-controller="dashboard" asp-action="index">
                             <i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span>
                         </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">Dashboard 1</a></li>
-                            <li><a href="./index2.html">Dashboard 2</a></li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" asp-controller="personalsettings" asp-action="index">
+                            <i class="icon icon-globe-2"></i><span class="nav-text">Personal Setting</span>
+                        </a>
                     </li>
                     <li class="nav-label">Apps</li>
                     <li>
@@ -375,8 +378,66 @@
     <script src="~/admin/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
     <script src="~/admin/vendor/jquery.counterup/jquery.counterup.min.js"></script>
 
-
+    <script src="~/libs/toastr.js/toastr.min.js"></script>
     <script src="~/admin/js/dashboard/dashboard-1.js"></script>
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+    <script src="~/libs/sweetalert/sweetalert.min.js"></script>
+    <script>
+        function removeEntity(id) {
+
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            buttons:["No","Yes"]
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+
+                $.ajax({
+                    url: '@Url.Action("Delete")',
+                    type: "post",
+                    data: { id },
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.error == false) {
+                            swal("Deleted!", "File has been deleted.", "success");
+                            window.location.reload();
+                        } else {
+                            swal("Error", "File couldn't be deleted", "error");
+                            console.log("no")
+                        }
+
+                    },
+                    error: function (response) {
+                        console.log(response)
+                    }
+                })
+            }
+        });
+    }
+    </script>
+    @RenderSection("addjs", required: false)
 
 </body>
 

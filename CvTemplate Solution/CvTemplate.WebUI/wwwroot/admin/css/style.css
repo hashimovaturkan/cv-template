@@ -19404,3 +19404,40 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+table tr {
+    color: #696969 !important;
+}
+thead {
+    color: black !important;
+}
+.crud-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+table.table td a:hover {
+    color: #2196F3 !important;
+}
+table.table td a.delete {
+    color: #F44336 !important;
+    font-size: 23px;
+    margin-right: 10px;
+    cursor:pointer;
+}
+table.table td a.edit {
+    color: #FFC107 !important;
+    font-size: 23px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+table.table td a.view {
+    color: #0000ff !important;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+form {
+    color: #696969 !important;
+}

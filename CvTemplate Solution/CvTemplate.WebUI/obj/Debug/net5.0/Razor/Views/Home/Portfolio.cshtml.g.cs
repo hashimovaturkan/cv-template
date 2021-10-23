@@ -41,14 +41,28 @@ using CvTemplate.Domain.Models.Enums;
 #line hidden
 #nullable disable
 #nullable restore
+#line 8 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Views\_ViewImports.cshtml"
+using CvTemplate.Application.Core.Infrastructure;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 10 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Views\_ViewImports.cshtml"
+using CvTemplate.Domain.Models.FormModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Views\_ViewImports.cshtml"
 using Resources;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5be49eb99124d65954a87f331a493b16a0abbe46", @"/Views/Home/Portfolio.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7fae1d61a5ce34e74a448e9ef17a1d4a8720bccf", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"92ea3f6ea9d0387d7afd5c355a53175b8fdc7dc5", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Portfolio : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ProjectJobCategoryViewModel>
     {
         #pragma warning disable 1998

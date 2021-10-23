@@ -1,4 +1,5 @@
 ﻿using CvTemplate.Domain.Models.DataContexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,6 +16,8 @@ namespace CvTemplate.WebUI.Controllers
         {
             this.db = db;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
 
@@ -25,6 +28,7 @@ namespace CvTemplate.WebUI.Controllers
             return View(list);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var blog =await db.BlogPosts

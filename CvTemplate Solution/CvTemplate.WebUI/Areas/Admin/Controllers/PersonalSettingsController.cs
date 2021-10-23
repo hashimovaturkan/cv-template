@@ -7,155 +7,110 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CvTemplate.Domain.Models.DataContexts;
 using CvTemplate.Domain.Models.Entities;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using CvTemplate.Application.Modules.Admin.PersonalSettingsModule;
 
 namespace CvTemplate.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class PersonalSettingsController : Controller
     {
-        private readonly CvTemplateDbContext _context;
+        readonly IMediator mediator;
 
-        public PersonalSettingsController(CvTemplateDbContext context)
+        public PersonalSettingsController(IMediator mediator)
         {
-            _context = context;
+            this.mediator = mediator;
         }
 
-        // GET: Admin/PersonalSettings
-        public async Task<IActionResult> Index()
+        //[Authorize(Policy = "admin.personalsetting.index")]
+        public async Task<IActionResult> Index(PersonalSettingPagedQuery query)
         {
-            var cvTemplateDbContext = _context.PersonalSettings.Include(p => p.CvTemplateUser);
-            return View(await cvTemplateDbContext.ToListAsync());
+            var response = await mediator.Send(query);
+
+            if (response == null)
+                return NotFound();
+
+            return View(response);
         }
 
-        // GET: Admin/PersonalSettings/Details/5
-        public async Task<IActionResult> Details(int? id)
+        //[Authorize(Policy = "admin.personalsetting.details")]
+        public async Task<IActionResult> Details(PersonalSettingSingleQuery query)
         {
-            if (id == null)
+            var response = await mediator.Send(query);
+            if (response == null)
             {
                 return NotFound();
             }
 
-            var personalSetting = await _context.PersonalSettings
-                .Include(p => p.CvTemplateUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (personalSetting == null)
-            {
-                return NotFound();
-            }
-
-            return View(personalSetting);
+            return View(response);
         }
 
-        // GET: Admin/PersonalSettings/Create
-        public IActionResult Create()
+        //[Authorize(Policy = "admin.personalsetting.create")]
+        public async Task<IActionResult> Create()
         {
-            ViewData["CvTemplateUserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["CvTemplateUserId"] = new SelectList(await mediator.Send(new UserChooseQuery()), "Id", "Username"??"Email");
             return View();
         }
 
-        // POST: Admin/PersonalSettings/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Age,Location,Experience,Degree,CareerLevel,Phone,Fax,Website,Email,CvTemplateUserId,Id,CreatedByUserId,CreatedDate,DeletedByUserId,DeletedDate")] PersonalSetting personalSetting)
+        //[Authorize(Policy = "admin.personalsetting.create")]
+        public async Task<IActionResult> Create(PersonalSettingCreateCommand command)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(personalSetting);
-                await _context.SaveChangesAsync();
+            var response = await mediator.Send(command);
+            if (response > 0)
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["CvTemplateUserId"] = new SelectList(_context.Users, "Id", "Id", personalSetting.CvTemplateUserId);
-            return View(personalSetting);
+
+            return View(command);
         }
 
-        // GET: Admin/PersonalSettings/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        //[Authorize(Policy = "admin.personalsetting.edit")]
+        public async Task<IActionResult> Edit(PersonalSettingSingleQuery query)
         {
-            if (id == null)
+            var response = await mediator.Send(query);
+            if (response == null)
             {
                 return NotFound();
             }
 
-            var personalSetting = await _context.PersonalSettings.FindAsync(id);
-            if (personalSetting == null)
-            {
-                return NotFound();
-            }
-            ViewData["CvTemplateUserId"] = new SelectList(_context.Users, "Id", "Id", personalSetting.CvTemplateUserId);
-            return View(personalSetting);
+            var vm = new PersonalSettingViewModel();
+            vm.Id = response.Id;
+            vm.Age = response.Age;
+            vm.Name = response.Name;
+            vm.Experience = response.Experience;
+            vm.CareerLevel = response.CareerLevel;
+            vm.Degree = response.Degree;
+            vm.Location = response.Location;
+            vm.Phone = response.Phone;
+            vm.Fax = response.Fax;
+            vm.Website = response.Website;
+            vm.Email = response.Email;
+            vm.CvTemplateUserId = response.CvTemplateUserId;
+            return View(vm);
         }
 
-        // POST: Admin/PersonalSettings/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Age,Location,Experience,Degree,CareerLevel,Phone,Fax,Website,Email,CvTemplateUserId,Id,CreatedByUserId,CreatedDate,DeletedByUserId,DeletedDate")] PersonalSetting personalSetting)
+        //[Authorize(Policy = "admin.personalsetting.edit")]
+        public async Task<IActionResult> Edit(PersonalSettingUpdateCommand command)
         {
-            if (id != personalSetting.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(personalSetting);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PersonalSettingExists(personalSetting.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+            var response = await mediator.Send(command);
+            if (response > 0)
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["CvTemplateUserId"] = new SelectList(_context.Users, "Id", "Id", personalSetting.CvTemplateUserId);
-            return View(personalSetting);
+
+            return View(command);
         }
 
-        // GET: Admin/PersonalSettings/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+
+        [HttpPost]
+        //[Authorize(Policy = "admin.personalsetting.delete")]
+        public async Task<IActionResult> Delete(PersonalSettingDeleteCommand command)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var personalSetting = await _context.PersonalSettings
-                .Include(p => p.CvTemplateUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (personalSetting == null)
-            {
-                return NotFound();
-            }
-
-            return View(personalSetting);
-        }
-
-        // POST: Admin/PersonalSettings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var personalSetting = await _context.PersonalSettings.FindAsync(id);
-            _context.PersonalSettings.Remove(personalSetting);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool PersonalSettingExists(int id)
-        {
-            return _context.PersonalSettings.Any(e => e.Id == id);
+            var response = await mediator.Send(command);
+            return Json(response);
         }
     }
 }

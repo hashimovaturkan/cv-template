@@ -1,0 +1,145 @@
+﻿@model LoginFormModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Focus - Bootstrap Admin Dashboard </title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/admin/images/favicon.png">
+    <link href="~/admin/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="h-100">
+    <div class="authincation h-100">
+        <div class="container-fluid h-100">
+            <div class="row justify-content-center h-100 align-items-center">
+                <div class="col-md-6">
+                    <div class="authincation-content">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+                                    <h4 class="text-center mb-4">Sign in your account</h4>
+                                    <form method="post" asp-controller="Account" asp-action="Login">
+                                        <label class="text-danger">@ViewBag.Message</label>
+                                        <div class="form-group">
+                                            <label><strong>Email</strong></label>
+                                            <input type="text" class="form-control" asp-for="UserName" value="hello@example.com">
+                                            <span asp-validation-for="UserName" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>Password</strong></label>
+                                            <input type="password" class="form-control" asp-for="Password" value="Password">
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-row d-flex justify-content-between mt-4 mb-2">
+                                            <div class="form-group">
+                                                <div class="form-check ml-2">
+                                                    <input class="form-check-input" type="checkbox" id="basic_checkbox_1">
+                                                    <label class="form-check-label" for="basic_checkbox_1">Remember me</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <a href="page-forgot-password.html">Forgot Password?</a>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary btn-block">Sign me in</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="~/admin/vendor/global/global.min.js"></script>
+    <script src="~/admin/js/quixnav-init.js"></script>
+    <script src="~/admin/js/custom.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SignIn</title>
+    <link rel="stylesheet" href="~/admin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/admin/css/style.css" />
+
+</head>
+<body>
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_box mb_30">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4">
+                                <!-- sign_in  -->
+                                <div class="modal-content cs_modal">
+                                    <div class="modal-header justify-content-center theme_bg_1">
+                                        <h5 class="modal-title text_white">Log in</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" asp-controller="Account" asp-action="Login">
+                                            <label class="text-danger">@ViewBag.Message</label>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" asp-for="UserName" placeholder="Enter your email">
+                                                <span asp-validation-for="UserName" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+                                                <span asp-validation-for="Password" class="text-danger"></span>
+                                            </div>
+                                            <button class="btn_1 full_width text-center">Log in</button>
+                                            <p>Need an account? <a data-dismiss="modal" asp-controller="Account" asp-action="Register"> Sign Up</a></p>
+                                            <div class="text-center">
+                                                <a href="#" data-toggle="modal" data-target="#forgot_password" data-dismiss="modal" class="pass_forget_btn">Forget Password?</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/admin/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+
+<environment names="Development">
+    <script>
+        $(document).ready(function () {
+            $("#Password").val("123");
+            $("#UserName").val("Turkan");
+        });
+    </script>
+</environment>

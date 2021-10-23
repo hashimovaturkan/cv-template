@@ -1,0 +1,164 @@
+﻿@model RegisterFormModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/uploads/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/util.css">
+    <link href="~/libs/toastr.js/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/assets/css/mainLogin.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" id="registerfrm" method="post">
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Register
+                    </span>
+                    <label class="text-danger label-validation">@ViewBag.Message</label>
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" asp-for="UserName" placeholder="Username*" required>
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        <span asp-validation-for="UserName"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="email" asp-for="Email" placeholder="Email Address *" required>
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        <span asp-validation-for="Email"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" asp-for="Password" placeholder="Password *" required>
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                        <span asp-validation-for="Password"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
+                            Login
+                        </button>
+                    </div>
+                    <a asp-action="signin" class="goto">
+                        Do you have account? <b>Sign in</b>
+                    </a>
+                    <div class="text-center p-t-30">
+                        <a class="txt1" asp-controller="home" asp-action="about">
+                            Go to Home
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/bootstrap/js/popper.js"></script>
+    <script src="~/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/daterangepicker/moment.min.js"></script>
+    <script src="~/assets/vendors/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.js"></script>
+    <script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/libs/toastr.js/toastr.min.js"></script>
+    <script src="~/assets/js/mainLogin.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#registerfrm").submit(function (e) {
+                e.preventDefault();
+
+                if (!$(e.currentTarget).valid())
+                    return;
+
+                var frm = new FormData(e.currentTarget);
+
+                $.ajax({
+                    url: '@Url.Action("Register", "Account")',
+                    type: "Post",
+                    data: frm,
+                    contentType: false,
+                    dataType: "json",
+                    processData: false,
+                    beforeSend: function (response) {
+                        console.log("before sending")
+                    },
+                    success: function (response) {
+                        if (response.error == false) {
+                            toastr.success(response.message, "Successfully!")
+                            e.currentTarget.reset();
+                        }
+                        else {
+                            toastr.error(response.message, "Error!")
+                        }
+
+                    },
+                    error: function (response) {
+                        toastr.error("Please, try again...", "Error!")
+                    }
+
+                }).always(function () {
+                    console.log("after sending")
+                });
+
+
+            }).validate({
+                errorClass: "invalid",
+                validClass: "valid"
+            });
+        })
+    </script>
+
+</body>
+</html>
+
+

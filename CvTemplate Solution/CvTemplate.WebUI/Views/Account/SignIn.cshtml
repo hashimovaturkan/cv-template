@@ -1,0 +1,292 @@
+﻿@model LoginFormModel
+@{
+    ViewData["Title"] = "SignIn";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/uploads/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/vendors/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/css/mainLogin.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post" asp-action="SignIn" asp-controller="Account">
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Log in
+                    </span>
+                    <label class="text-danger label-validation">@ViewBag.Message</label>
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" asp-for="UserName" placeholder="Username or Email Address *" required>
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        <span asp-validation-for="UserName"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <input class="input100" type="password" asp-for="Password" placeholder="Password *" required>
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                        <span asp-validation-for="Password"></span>
+                    </div>
+
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
+                            Login
+                        </button>
+                    </div>
+                    <a asp-action="register" class="goto">
+                        Do you have account? <b>Register</b>
+                    </a>
+                    <div class="text-center p-t-30">
+                        <a class="txt1" asp-controller="home" asp-action="about">
+                            Go to Home
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/bootstrap/js/popper.js"></script>
+    <script src="~/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/daterangepicker/moment.min.js"></script>
+    <script src="~/assets/vendors/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/assets/vendors/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/assets/js/mainLogin.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+@*<nav class="breadcrumb-nav">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a asp-action="Index" asp-controller="Home"><i class="d-icon-home"></i></a></li>
+            <li><a asp-action="Index" asp-controller="Shop">Riode Shop</a></li>
+            <li>My Account</li>
+        </ul>
+    </div>
+</nav>
+<div class="page-content mt-6 pb-2 mb-10">
+    <div class="container">
+        <div class="login-popup">
+            <div class="form-box">
+                <div class="tab tab-nav-simple tab-nav-boxed form-tab">
+                    <ul class="nav nav-tabs nav-fill align-items-center border-no justify-content-center mb-5" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active border-no lh-1 ls-normal" href="#signin">Login</a>
+                        </li>
+                        <li class="delimiter">or</li>
+                        <li class="nav-item">
+                            <a class="nav-link border-no lh-1 ls-normal" href="#register">Register</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="signin">
+                            <form method="post" asp-action="SignIn" asp-controller="Account">
+                                <label class="text-danger">@ViewBag.Message</label>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" asp-for="UserName" placeholder="Username or Email Address *" required />
+                                    <span asp-validation-for="UserName"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" asp-for="Password" placeholder="Password *"
+                                           required />
+                                    <span asp-validation-for="Password"></span>
+                                </div>
+                                <div class="form-footer">
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" class="custom-checkbox" id="signin-remember"
+                                               name="signin-remember" />
+                                        <label class="form-control-label" for="signin-remember">
+                                            Remember
+                                            me
+                                        </label>
+                                    </div>
+                                    <a href="#" class="lost-link">Lost your password?</a>
+                                </div>
+                                <button class="btn btn-dark btn-block btn-rounded" type="submit">Login</button>
+                            </form>
+                            <div class="form-choice text-center">
+                                <label class="ls-m">or Login With</label>
+                                <div class="social-links">
+                                    <a href="#" class="social-link social-google fab fa-google border-no"></a>
+                                    <a href="#" class="social-link social-facebook fab fa-facebook-f border-no"></a>
+                                    <a href="#" class="social-link social-twitter fab fa-twitter border-no"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="register">
+                            <form method="post" asp-controller="account" asp-action="register" id="register-frm">
+                                <div class="form-group">
+                                    <input class="form-control" id="register-username" name="Username" placeholder="Your Username *"
+                                           data-rule-required="true" data-msg-required="Please, enter your username" />
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="register-email" name="Email" placeholder="Your Email address *"
+                                           data-rule-required="true" data-msg-required="Please, enter your email"
+                                           data-rule-email="true" data-msg-email="Invalid email address" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="register-password" name="Password" placeholder="Password *"
+                                           data-rule-required="true" data-msg-required="Please, enter your password" />
+                                </div>
+                                <div class="form-footer">
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" class="custom-checkbox" id="register-agree" name="AgreePolicy"
+                                               data-rule-required="true" />
+                                        <label class="form-control-label" for="register-agree" id="agree-policy">
+                                            I agree to the
+                                            privacy policy
+                                        </label>
+                                    </div>
+                                </div>
+                                <button class="btn btn-dark btn-block btn-rounded" type="submit">Register</button>
+                            </form>
+                            <div class="form-choice text-center">
+                                <label class="ls-m">or Register With</label>
+                                <div class="social-links">
+                                    <a href="#" class="social-link social-google fab fa-google border-no"></a>
+                                    <a href="#" class="social-link social-facebook fab fa-facebook-f border-no"></a>
+                                    <a href="#" class="social-link social-twitter fab fa-twitter border-no"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<environment names="Development">
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#Password").val("123");
+            $("#UserName").val("Turkan");
+        });
+
+    </script>
+</environment>
+
+@*@section addjs{
+    <script>
+        $(document).ready(function () {
+            $("#register-frm").submit(function (e) {
+                e.preventDefault();
+
+                if (!$(e.currentTarget).valid())
+                    return;
+
+                var frm = new FormData(e.currentTarget);
+
+                $.ajax({
+                    url: '@Url.Action("Register", "Account")',
+                    type: "Post",
+                    data: frm,
+                    contentType: false,
+                    dataType: "json",
+                    processData: false,
+                    beforeSend: function (response) {
+                        console.log("before sending")
+                    },
+                    success: function (response) {
+                        if (response.error == false) {
+                            toastr.success(response.message, "Successfully!")
+                            e.currentTarget.reset();
+                        }
+                        else {
+                            toastr.error(response.message, "Error!")
+                        }
+
+                    },
+                    error: function (response) {
+                        toastr.error("Please, try again...", "Error!")
+                    }
+
+                }).always(function () {
+                    console.log("after sending")
+                });
+
+
+            }).validate({
+                errorClass: "invalid",
+                validClass: "valid"
+            });
+        })
+    </script>
+}*@
+
+@section addcss{
+    <link href="~/libs/toastr.js/toastr.css" rel="stylesheet" />
+    <style>
+        .invalid + label {
+            font-size: 12px !important;
+            color: red !important;
+        }
+
+        #register-agree + .invalid {
+            display: none !important;
+        }
+
+        [aria-invalid="false"] + label + label {
+            color: #666 !important;
+        }
+    </style>
+}
+

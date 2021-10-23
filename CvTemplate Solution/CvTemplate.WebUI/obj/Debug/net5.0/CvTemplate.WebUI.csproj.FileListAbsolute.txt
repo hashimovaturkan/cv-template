@@ -181,7 +181,6 @@ E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Web
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\CvTemplate.WebUI.TagHelpers.output.cache
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\CvTemplate.WebUI.RazorCoreGenerate.cache
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\PersonalSettings\Create.cshtml.g.cs
-E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\PersonalSettings\Delete.cshtml.g.cs
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\PersonalSettings\Details.cshtml.g.cs
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\PersonalSettings\Edit.cshtml.g.cs
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\PersonalSettings\Index.cshtml.g.cs
@@ -346,3 +345,6 @@ E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Web
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\bin\Debug\net5.0\Microsoft.Extensions.Localization.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\bin\Debug\net5.0\Microsoft.Extensions.Localization.Abstractions.dll
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Account\Login.cshtml.g.cs
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Views\Account\SignIn.cshtml.g.cs
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs

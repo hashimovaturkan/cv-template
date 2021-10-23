@@ -11,45 +11,45 @@
         <img src="/uploads/images/avatar.jpg" class="img-responsive" alt="">
         <ul class="personal-info">
             <li>
-                <p> <span> Name</span> @Model.PersonalSetting.Name </p>
+                <p> <span> Name</span> @Model.PersonalSetting?.Name </p>
             </li>
             <li>
-                <p> <span> Age</span> @Model.PersonalSetting.Age </p>
+                <p> <span> Age</span> @Model.PersonalSetting?.Age </p>
             </li>
             <li>
-                <p> <span> Location</span> @Model.PersonalSetting.Location </p>
+                <p> <span> Location</span> @Model.PersonalSetting?.Location </p>
             </li>
             <li>
-                <p> <span> Experience</span> @Model.PersonalSetting.Experience </p>
+                <p> <span> Experience</span> @Model.PersonalSetting?.Experience </p>
             </li>
             <li>
-                <p> <span> Degree</span> @Model.PersonalSetting.Degree </p>
+                <p> <span> Degree</span> @Model.PersonalSetting?.Degree </p>
             </li>
             <li>
-                <p> <span> Career Level</span> @Model.PersonalSetting.CareerLevel </p>
+                <p> <span> Career Level</span> @Model.PersonalSetting?.CareerLevel </p>
             </li>
             <li>
-                <p> <span> Phone</span> @Model.PersonalSetting.Phone </p>
+                <p> <span> Phone</span> @Model.PersonalSetting?.Phone </p>
             </li>
             <li>
-                <p> <span> FAX</span> @Model.PersonalSetting.Fax </p>
+                <p> <span> FAX</span> @Model.PersonalSetting?.Fax </p>
             </li>
             <li>
-                <p> <span> E-mail</span> <a href="@Model.PersonalSetting.Email"> @Model.PersonalSetting.Email</a> </p>
+                <p> <span> E-mail</span> <a href="@Model.PersonalSetting?.Email"> @Model.PersonalSetting?.Email</a> </p>
             </li>
             <li>
-                <p> <span> Website</span><a href="@Model.PersonalSetting.Website"> @Model.PersonalSetting.Website</a></p>
+                <p> <span> Website</span><a href="@Model.PersonalSetting?.Website"> @Model.PersonalSetting?.Website</a></p>
             </li>
         </ul>
 
         <!-- Attachments -->
-        <h5 class="tittle">Attachments</h5>
+        <h5 class="tittle mt-5">Attachments</h5>
         <div class="attach bor-btm padding-25">
             <ul>
                 @foreach (var item in Model.Attachments)
                 {
                     <li>
-                        <p><img src="/uploads/images/@item.IconUrl" alt=""> @item.Name <a download href="~/uploads/files/@item.AttachmentUrl"><i class="fa fa-cloud-download"></i></a> <a href="@item.AttachmentUrl"><i class="fa fa-eye"></i></a></p>
+                        <p><img src="/uploads/images/@item?.IconUrl" alt=""> @item?.Name <a download href="~/uploads/files/@item?.AttachmentUrl"><i class="fa fa-cloud-download"></i></a> <a href="@item.AttachmentUrl"><i class="fa fa-eye"></i></a></p>
                     </li>
                 }
                 @*<li>
@@ -64,7 +64,7 @@
             <ul>
                 @foreach (var item in Model.SocialProfiles)
                 {
-                    <li> <a href="@item.IconUrl"> <i class="fa fa-@item.Name"></i></a> </li>
+                    <li> <a href="@item?.IconUrl"> <i class="fa fa-@item?.Name"></i></a> </li>
                 }
                 @*<li> <a href="#."> <i class="fa fa-google"></i></a> </li>
                     <li> <a href="#."> <i class="fa fa-twitter"></i></a> </li>

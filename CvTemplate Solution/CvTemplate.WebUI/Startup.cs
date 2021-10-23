@@ -14,6 +14,14 @@ using Newtonsoft.Json;
 using CvTemplate.Application.Core.Providers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using CvTemplate.Application.Core.Middlewares;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using CvTemplate.Application.Core.Extensions;
+using CvTemplate.Domain.Models.Entities.Membership;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 
 namespace CvTemplate.WebUI
 {
@@ -28,7 +36,16 @@ namespace CvTemplate.WebUI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews()
+            services.AddControllersWithViews(cfg =>
+            {
+                cfg.ModelBinderProviders.Insert(0, new BooleanBinderProvider());  
+
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+
+                cfg.Filters.Add(new AuthorizeFilter(policy));
+            })
                 .AddNewtonsoftJson(cfg =>
                     cfg.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 ); 
@@ -41,6 +58,65 @@ namespace CvTemplate.WebUI
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
             services.AddRouting(cfg => cfg.LowercaseUrls = true);
+
+            services.AddIdentity<CvTemplateUser, CvTemplateRole>()
+                .AddEntityFrameworkStores<CvTemplateDbContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<UserManager<CvTemplateUser>>(); 
+            services.AddScoped<RoleManager<CvTemplateRole>>();  
+            services.AddScoped<SignInManager<CvTemplateUser>>();  
+            
+            services.AddScoped<IClaimsTransformation, AppClaimProvider>();
+
+            services.Configure<IdentityOptions>(cfg =>
+            {
+                cfg.Password.RequireDigit = false;
+                cfg.Password.RequireUppercase = false;
+                cfg.Password.RequireLowercase = false;
+                cfg.Password.RequiredUniqueChars = 1;
+                cfg.Password.RequireNonAlphanumeric = false;
+                cfg.Password.RequiredLength = 3;
+
+                cfg.User.RequireUniqueEmail = true;
+
+                cfg.Lockout.MaxFailedAccessAttempts = 3;
+                cfg.Lockout.DefaultLockoutTimeSpan = new TimeSpan(0, 3, 0);
+
+                cfg.SignIn.RequireConfirmedEmail = true;
+            });
+
+            services.ConfigureApplicationCookie(cfg =>
+            {
+                cfg.LoginPath = "/signin.html";
+                cfg.AccessDeniedPath = "/accessdenied.html";
+
+                cfg.ExpireTimeSpan = new TimeSpan(0, 5, 0);
+                cfg.Cookie.Name = "Riode";
+            });
+
+            services.AddAuthentication(); 
+
+
+            services.AddAuthorization(cfg =>
+            {
+                foreach (var item in Extension.principals)
+                {
+                    cfg.AddPolicy(item, p =>
+                    {
+                        p.RequireAssertion(h =>
+                        {
+                            return h.User.IsInRole("SuperAdmin") ||
+                            h.User.HasClaim(item, "1");
+                        });
+                    });
+                }
+
+            });
+
+            var asmbls = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.StartsWith("CvTemplate."))
+                .ToArray();
+            services.AddMediatR(asmbls);
 
         }
 
@@ -59,6 +135,8 @@ namespace CvTemplate.WebUI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.SeedMembership();
+
 
             app.UseRouting();
 
@@ -71,13 +149,65 @@ namespace CvTemplate.WebUI
                 cfg.RequestCultureProviders.Add(new CultureProvider());
             });
 
+            app.Use(async (context, next) =>
+            {
+                if (!context.User.Identity.IsAuthenticated
+                && !context.Request.Cookies.ContainsKey("riode")
+                && context.Request.RouteValues.TryGetValue("area", out object areaName)
+                && areaName.ToString().ToLower().Equals("admin"))
+                {
+                    var attr = context.GetEndpoint().Metadata.GetMetadata<AllowAnonymousAttribute>();
+                    if (attr == null)
+                    {
+                        context.Response.Redirect("/admin/signin.html");
+                        await context.Response.CompleteAsync();
+                    }
+
+                }
+                await next();
+            });
+
             app.UseAudit();
 
             app.UseAuthorization();
 
-            
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute("admin_signIn", "admin/signin.html",
+                //    defaults: new
+                //    {
+                //        controller = "Account",
+                //        action = "Login",
+                //        area = "Admin"
+                //    });
+
+                //endpoints.MapControllerRoute("default_signIn", "signin.html",
+                //    defaults: new
+                //    {
+                //        controller = "Account",
+                //        action = "SignIn",
+                //        area = ""
+                //    });
+
+                //endpoints.MapControllerRoute("default_register", "register.html",
+                //    defaults: new
+                //    {
+                //        controller = "Account",
+                //        action = "Register",
+                //        area = ""
+                //    });
+
+                //endpoints.MapControllerRoute("admin_signOut", "admin/logout.html",
+                //    defaults: new
+                //    {
+                //        controller = "Account",
+                //        action = "Logout",
+                //        area = "Admin"
+                //    });
+
                 endpoints.MapControllerRoute(
                       name: "areas-with-lang",
                       pattern: "{lang}/{area:exists}/{controller=Dashboard}/{action=Index}/{id?}",

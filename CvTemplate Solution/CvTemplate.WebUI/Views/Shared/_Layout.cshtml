@@ -109,10 +109,36 @@
                                 <div class="col-sm-6">
                                     <h4>Resume </h4>
                                     <a class="top-head-alt" href="resume(edit-mode).html">Edit Resume</a>
-
                                 </div>
-                                <div class="col-sm-6 ">
+                                <div class="col-sm-6">
                                     <a class="top-head-alt" id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+                                    <ul id="simple-account-dropdown-freebie">
+                                        <li>
+                                            <div id="simple-account-dropdown">
+
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <div class="account">
+                                                        <span>@User.GetPrincipalName()</span>
+                                                    </div>
+                                                    <div class="dropdown" style="display: none">
+                                                        <ul>
+                                                            <li><a href="#"> Profile</a></li>
+                                                            <li><a asp-controller="account" asp-action="logout"> Logout</a></li>
+                                                        </ul>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <a class="account" asp-controller="account" asp-action="signin">
+                                                        <span>Sign in / Register</span>
+                                                    </a>
+
+                                                }
+
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -189,7 +215,9 @@
     <!-- Begin Map Script-->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script src="~/assets/js/vendors/map.js"></script>
+    <script src="~/libs/jquery/jquery.js"></script>
     <script src="~/libs/toastr.js/toastr.min.js"></script>
+
     @RenderSection("addjs", required: false)
 
 <script>
@@ -312,7 +340,19 @@
 
             })
 </script>
-    
+    @*account button*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#simple-account-dropdown > .account").click(function () {
+            $("#simple-account-dropdown > .dropdown").fadeToggle("fast", function () {
+                if ($(this).css('display') == "none")
+                    $("#simple-account-dropdown > .account").removeClass("active");
+                else
+                    $("#simple-account-dropdown > .account").addClass("active");
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

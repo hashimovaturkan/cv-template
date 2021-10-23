@@ -1,6 +1,7 @@
 ﻿using CvTemplate.Domain.Models.DataContexts;
 using CvTemplate.Domain.Models.Entities;
 using CvTemplate.Domain.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace CvTemplate.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly CvTemplateDbContext db;
@@ -25,11 +27,14 @@ namespace CvTemplate.WebUI.Controllers
         public async Task<IActionResult> Contact()
         {
             var personalSetting =await db.PersonalSettings.FirstOrDefaultAsync(c => c.DeletedByUserId == null);
-            var data = new ContactViewModel() {
-                Location = personalSetting.Location,
-                Phone = personalSetting.Phone,
-                MainEmail = personalSetting.Email
-            };
+            var data =new  ContactViewModel();
+            if(personalSetting != null)
+            {
+                data.Location = personalSetting.Location;
+                data.Phone = personalSetting.Phone;
+                data.MainEmail = personalSetting.Email;
+                
+            }
 
             return View(data);
         }

@@ -15,41 +15,41 @@
             <!-- Personal Info -->
             <ul class="personal-info">
                 <li>
-                    <p> <span> Name</span> @Model.PersonalSetting.Name </p>
+                    <p> <span> Name</span> @Model.PersonalSetting?.Name </p>
                 </li>
                 <li>
-                    <p> <span> Age</span> @Model.PersonalSetting.Age Years </p>
+                    <p> <span> Age</span> @Model.PersonalSetting?.Age Years </p>
                 </li>
                 <li>
-                    <p> <span> Location</span> @Model.PersonalSetting.Location </p>
+                    <p> <span> Location</span> @Model.PersonalSetting?.Location </p>
                 </li>
                 <li>
-                    <p> <span> Experience</span> @Model.PersonalSetting.Experience </p>
+                    <p> <span> Experience</span> @Model.PersonalSetting?.Experience </p>
                 </li>
                 <li>
-                    <p> <span> Degree</span> @Model.PersonalSetting.Degree </p>
+                    <p> <span> Degree</span> @Model.PersonalSetting?.Degree </p>
                 </li>
                 <li>
-                    <p> <span> Career Level</span> @Model.PersonalSetting.CareerLevel </p>
+                    <p> <span> Career Level</span> @Model.PersonalSetting?.CareerLevel </p>
                 </li>
                 <li>
-                    <p> <span> Phone</span> @Model.PersonalSetting.Phone </p>
+                    <p> <span> Phone</span> @Model.PersonalSetting?.Phone </p>
                 </li>
                 <li>
-                    <p> <span> FAX</span> @Model.PersonalSetting.Fax </p>
+                    <p> <span> FAX</span> @Model.PersonalSetting?.Fax </p>
                 </li>
                 <li>
-                    <p> <span> E-mail</span> <a href="#."> @Model.PersonalSetting.Email</a> </p>
+                    <p> <span> E-mail</span> <a href="#."> @Model.PersonalSetting?.Email</a> </p>
                 </li>
                 <li>
-                    <p> <span> Website</span><a href="#."> @Model.PersonalSetting.Website</a></p>
+                    <p> <span> Website</span><a href="#."> @Model.PersonalSetting?.Website</a></p>
                 </li>
             </ul>
 
             <!-- I’m Web Designer -->
-            <h5 class="tittle">@Model.Bio.Title</h5>
+            <h5 class="tittle">@Model.Bio?.Title</h5>
             <div class="padding-20">
-                @Html.Raw(Model.Bio.Content)
+                @Html.Raw(Model.Bio?.Content)
             </div>
 
             <!-- Services -->
@@ -60,10 +60,10 @@
                 {
                     <div class="col-md-4 text-center">
                         <div class="icon-box i-large ib-black">
-                            <div class="ib-icon"> <img src="~/uploads/images/@item.IconUrl" style="width:40px; height:40px;"> </div>
+                            <div class="ib-icon"> <img src="~/uploads/images/@item?.IconUrl" style="width:40px; height:40px;"> </div>
                             <div class="ib-info">
-                                <h4 class="h6">@item.Title</h4>
-                                <p>@item.Description</p>
+                                <h4 class="h6">@item?.Title</h4>
+                                <p>@item?.Description</p>
                             </div>
                         </div>
                     </div>
@@ -82,28 +82,28 @@
                 @foreach (var skill in Model.Skills)
                 {
 
-                    if (skill.IsBar == false)
+                    if (skill?.IsBar == false)
                     {
                         <div class="panel panel-default">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <!-- PANEL HEADING -->
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-@index" class="collapsed" href="#collapseOne-@index"> @skill.Name</a> </h4>
+                                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-@index" class="collapsed" href="#collapseOne-@index"> @skill?.Name</a> </h4>
                                     </div>
                                 </div>
 
                                 <!-- Skillls Bars -->
                                 <div class="col-sm-8">
                                     <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="@skill.Level" aria-valuemin="0" aria-valuemax="100" style="width: @skill.Level%;"> <span class="sr-only">@skill.Level% Complete</span> </div>
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="@skill.Level?" aria-valuemin="0" aria-valuemax="100" style="width: @skill?.Level%;"> <span class="sr-only">@skill?.Level% Complete</span> </div>
                                     </div>
 
                                     <!-- Skillls Text -->
                                     <div id="collapseOne-@index" class="panel-collapse collapse">
                                         @{index++; }
                                         <div class="panel-body">
-                                            <p>@skill.Description</p>
+                                            <p>@skill?.Description?</p>
                                         </div>
                                     </div>
                                 </div>
