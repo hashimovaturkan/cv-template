@@ -348,3 +348,4 @@ E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Web
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\Account\Login.cshtml.g.cs
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Views\Account\SignIn.cshtml.g.cs
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Views\Account\AccessDeny.cshtml.g.cs

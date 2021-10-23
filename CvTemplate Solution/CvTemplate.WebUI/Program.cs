@@ -17,10 +17,11 @@ namespace CvTemplate.WebUI
     {
         public static void Main(string[] args)
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => a.FullName.StartsWith("Riode."))
-                .SelectMany(a => a.GetTypes())
-                .ToArray();
+            var types = typeof(Program).Assembly.GetTypes();
+            //var types = AppDomain.CurrentDomain.GetAssemblies()
+            //    .Where(a => a.FullName.StartsWith("CvTemplate."))
+            //    .SelectMany(a => a.GetTypes())
+            //    .ToArray();
 
             Extension.principals = types
                     .Where(t => typeof(ControllerBase).IsAssignableFrom(t) && t.IsDefined(typeof(AuthorizeAttribute), true))

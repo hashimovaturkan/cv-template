@@ -21,5 +21,12 @@ namespace CvTemplate.Application.Core.Extensions
 
             return principal.Claims.FirstOrDefault(c => c.Type.Equals(ClaimTypes.Email))?.Value;
         }
+        static public bool HasAccess(this ClaimsPrincipal principal, string policyName)
+        {
+            return principal.IsInRole("SuperAdmin") || 
+                principal.HasClaim(c => c.Type.Equals(policyName) && c.Value.Equals("1"));
+        }
     }
+
+    
 }

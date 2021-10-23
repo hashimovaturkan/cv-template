@@ -13,8 +13,16 @@
                             <h2><b>Personal Setting </b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a asp-action="Create" asp-controller="PersonalSetting" class="btn btn-success"><i class="fa fa-plus "></i> <span>Add New Size</span></a>
-                            <a asp-action="Delete" asp-controller="PersonalSetting" class="btn btn-danger"><i class="fa fa-trash"></i> <span>Delete</span></a>
+                            @if (User.HasAccess("admin.personalsettings.create"))
+                            {
+                                <a asp-action="Create" asp-controller="PersonalSetting" class="btn btn-success"><i class="fa fa-plus "></i> <span>Add New Size</span></a>
+
+                            }
+                            @if (User.HasAccess("admin.personalsettings.delete"))
+                            {
+                                <a asp-action="Delete" asp-controller="PersonalSetting" class="btn btn-danger"><i class="fa fa-trash"></i> <span>Delete</span></a>
+
+                            }
                         </div>
                     </div>
                 </div>
@@ -46,9 +54,22 @@
                             <td>@item.Name</td>
                             <td>@item.Age</td>
                             <td class="crud-btn">
-                                <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="PersonalSettings" class="edit"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
-                                <a onclick="removeEntity(@item.Id)" class="delete"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
-                                <a asp-action="Details" asp-route-id="@item.Id" asp-controller="PersonalSettings" class="view"><i class="fa fa-eye" data-toggle="tooltip" title="Details"></i></a>
+                                @if (User.HasAccess("admin.personalsettings.edit"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="PersonalSettings" class="edit"><i class="fa fa-edit" data-toggle="tooltip" title="Edit"></i></a>
+
+                                }
+                                @if (User.HasAccess("admin.personalsettings.delete"))
+                                {
+                                    <a onclick="removeEntity(@item.Id)" class="delete"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>
+
+                                }
+                                @if (User.HasAccess("admin.personalsettings.details"))
+                                {
+                                    <a asp-action="Details" asp-route-id="@item.Id" asp-controller="PersonalSettings" class="view"><i class="fa fa-eye" data-toggle="tooltip" title="Details"></i></a>
+
+                                }
+
                             </td>
                         </tr>
                     }

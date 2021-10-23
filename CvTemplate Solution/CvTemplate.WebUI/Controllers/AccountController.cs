@@ -31,7 +31,7 @@ namespace CvTemplate.WebUI.Controllers
             this.db = db;
         }
 
-        //[Authorize(Policy = "account.signin")]
+        [Authorize(Policy = "account.signin")]
         [Route("/signin.html")]
         public IActionResult SignIn()
         {
@@ -40,7 +40,7 @@ namespace CvTemplate.WebUI.Controllers
 
 
         [HttpPost]
-        //[Authorize(Policy = "account.signin")]
+        [Authorize(Policy = "account.signin")]
         [Route("/signin.html")]
         public async Task<IActionResult> SignIn(LoginFormModel user)
         {
@@ -94,7 +94,7 @@ namespace CvTemplate.WebUI.Controllers
             return View();
         }
 
-        //[Authorize(Policy = "account.register")]
+        [Authorize(Policy = "account.register")]
         [HttpPost]
         [Route("/register.html")]
         public async Task<IActionResult> Register(RegisterFormModel user)
@@ -197,7 +197,7 @@ namespace CvTemplate.WebUI.Controllers
         }
 
         [Route("email-confirm")]
-        //[Authorize(Policy = "account.emailconfirm")]
+        [Authorize(Policy = "account.emailconfirm")]
         public async Task<IActionResult> EmailConfirm(string email, string token)
         {
             var user = userManager.FindByEmailAsync(email).Result;
@@ -231,7 +231,7 @@ namespace CvTemplate.WebUI.Controllers
         }
 
         
-        //[Authorize(Policy = "account.logout")]
+        [Authorize(Policy = "account.logout")]
         [Route("/logout.html")]
         public async Task<IActionResult> Logout()
         {
