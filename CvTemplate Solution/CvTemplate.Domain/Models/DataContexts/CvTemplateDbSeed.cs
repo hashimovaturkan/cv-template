@@ -1,6 +1,7 @@
 ﻿using CvTemplate.Domain.Models.Entities.Membership;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -62,10 +63,25 @@ namespace CvTemplate.Domain.Models.DataContexts
                     {
                         userManager.AddToRoleAsync(user, role.Name).Wait();  
                     }
+                    else
+                    {
+                        goto end;
+                    }
                 }
             }
 
         end:
+            return builder;
+        }
+
+        public static IApplicationBuilder Seed(this IApplicationBuilder builder)
+        {
+            using (var scope = builder.ApplicationServices.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<CvTemplateDbContext>();
+                db.Database.Migrate();
+
+            }
             return builder;
         }
     }

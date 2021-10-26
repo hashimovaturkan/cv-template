@@ -1,0 +1,76 @@
+﻿@model AttachmentViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <h1>PersonalSetting Edit</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label">
+                            Attachment File
+                        </label>
+                        <label for="AttachmentFile" class="image-input" data-imgurl="/uploads/images/@Model.AttachmentUrl">
+                            <input name="fileTemp1" value="@Model.AttachmentUrl" type="hidden" />
+                            <span>x</span>
+                        </label>
+                        <input name="AttachmentFile" id="AttachmentFile" type="file"  />
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label">
+                            Icon Image
+                        </label>
+                        <label for="IconFile" class="image-input" data-imgurl="/uploads/images/@Model.IconUrl">
+                            <input name="fileTemp2" value="@Model.IconUrl" type="hidden" />
+                            <span>x</span>
+                        </label>
+                        <input name="IconFile" id="IconFile" type="file" accept="image/x-png,image/gif,image/jpeg" />
+                    </div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+@section addcss{
+
+    <link href="~/libs/jquery-image-input/image-input.css" rel="stylesheet" />
+}
+
+
+@section addjs{
+    <script src="~/libs/ckeditor5/ckeditor.js"></script>
+    <script src="~/libs/jquery-image-input/jquery.image-input.js"></script>
+    <script>
+        $(document).ready(function () {
+            ClassicEditor
+                .create(document.querySelector('#BlogPost_Content'))
+                .catch(error => {
+                    console.error(error);
+                });
+        })
+    </script>
+}
+
+
+

@@ -68,6 +68,8 @@ namespace CvTemplate.Application.Core.Providers
                 {
                     cIdentity.AddClaim(new Claim(item, "1"));
                 }
+
+
             }
 
             return principal;

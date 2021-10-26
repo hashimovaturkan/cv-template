@@ -25,9 +25,9 @@ namespace CvTemplate.Application.Modules.Admin.PersonalSettingsModule
             }
             public async Task<PagedViewModel<PersonalSetting>> Handle(PersonalSettingPagedQuery request, CancellationToken cancellationToken)
             {
-                var sizes = db.PersonalSettings.Where(s => s.DeletedByUserId == null).AsQueryable();
+                var model = db.PersonalSettings.Where(s => s.DeletedByUserId == null).AsQueryable();
 
-                return new PagedViewModel<PersonalSetting>(sizes, request.PageIndex, request.PageSize);
+                return new PagedViewModel<PersonalSetting>(model, request.PageIndex, request.PageSize);
             }
         }
     }

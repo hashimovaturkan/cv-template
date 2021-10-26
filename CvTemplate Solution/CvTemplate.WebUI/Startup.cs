@@ -92,7 +92,7 @@ namespace CvTemplate.WebUI
                 cfg.AccessDeniedPath = "/accessdenied.html";
 
                 cfg.ExpireTimeSpan = new TimeSpan(0, 5, 0);
-                cfg.Cookie.Name = "Riode";
+                cfg.Cookie.Name = "CvTemplate";
             });
 
             services.AddAuthentication(); 
@@ -126,13 +126,9 @@ namespace CvTemplate.WebUI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.Seed();
             }
-            else
-            {
-                //app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
-            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.SeedMembership();
@@ -152,7 +148,7 @@ namespace CvTemplate.WebUI
             app.Use(async (context, next) =>
             {
                 if (!context.User.Identity.IsAuthenticated
-                && !context.Request.Cookies.ContainsKey("riode")
+                && !context.Request.Cookies.ContainsKey("cvtemplate")
                 && context.Request.RouteValues.TryGetValue("area", out object areaName)
                 && areaName.ToString().ToLower().Equals("admin"))
                 {
@@ -169,44 +165,34 @@ namespace CvTemplate.WebUI
 
             app.UseAudit();
 
-            app.UseAuthorization();
-
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute("admin_signIn", "admin/signin.html",
-                //    defaults: new
-                //    {
-                //        controller = "Account",
-                //        action = "Login",
-                //        area = "Admin"
-                //    });
+                endpoints.MapControllerRoute("admin_signIn", "admin/signin.html",
+                    defaults: new
+                    {
+                        controller = "Account",
+                        action = "Login",
+                        area = "Admin"
+                    });
 
-                //endpoints.MapControllerRoute("default_signIn", "signin.html",
-                //    defaults: new
-                //    {
-                //        controller = "Account",
-                //        action = "SignIn",
-                //        area = ""
-                //    });
+                endpoints.MapControllerRoute("default_signIn", "signin.html",
+                    defaults: new
+                    {
+                        controller = "Account",
+                        action = "SignIn",
+                        area = ""
+                    });
 
-                //endpoints.MapControllerRoute("default_register", "register.html",
-                //    defaults: new
-                //    {
-                //        controller = "Account",
-                //        action = "Register",
-                //        area = ""
-                //    });
-
-                //endpoints.MapControllerRoute("admin_signOut", "admin/logout.html",
-                //    defaults: new
-                //    {
-                //        controller = "Account",
-                //        action = "Logout",
-                //        area = "Admin"
-                //    });
+                endpoints.MapControllerRoute("admin_signOut", "admin/logout.html",
+                    defaults: new
+                    {
+                        controller = "Account",
+                        action = "Logout",
+                        area = "Admin"
+                    });
 
                 endpoints.MapControllerRoute(
                       name: "areas-with-lang",

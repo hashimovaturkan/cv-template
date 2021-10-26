@@ -1,0 +1,74 @@
+﻿@model AttachmentCreateCommand
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <h1>Create PersonalSetting</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label">
+                            Attachment File
+                        </label>
+                        <label for="AttachmentFile" class="image-input">
+                            <input name="fileTemp1" value="" type="hidden" />
+                            <span>x</span>
+                        </label>
+                        <input name="AttachmentFile" id="AttachmentFile" type="file" />
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label">
+                            Icon image
+                        </label>
+                        <label for="IconFile" class="image-input">
+                            <input name="fileTemp2" value="" type="hidden" />
+                            <span>x</span>
+                        </label>
+                        <input name="IconFile" id="IconFile" type="file" accept="image/x-png,image/gif,image/jpeg" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+
+@section addcss{
+
+    <link href="~/libs/jquery-image-input/image-input.css" rel="stylesheet" />
+}
+
+@section addjs{
+    <script src="~/libs/ckeditor5/ckeditor.js"></script>
+    <script src="~/libs/jquery-image-input/jquery.image-input.js"></script>
+    <script>
+        $(document).ready(function () {
+            ClassicEditor
+                .create(document.querySelector('#Details'))
+                .catch(error => {
+                    console.error(error);
+                });
+        })
+    </script>
+}
+
+

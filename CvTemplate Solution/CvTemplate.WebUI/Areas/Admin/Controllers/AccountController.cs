@@ -36,7 +36,7 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
         }
 
         //[Authorize(Policy = "admin.account.login")]
-        [Route("/admin/signin.html")]
+        //[Route("admin/signin.html")]
         public IActionResult Login()
         {
             return View();
@@ -44,7 +44,7 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
 
         [HttpPost]
         //[Authorize(Policy = "admin.account.login")]
-        [Route("/admin/signin.html")]
+        //[Route("admin/signin.html")]
         public async Task<IActionResult> Login(LoginFormModel user)
         {
             if (ModelState.IsValid)

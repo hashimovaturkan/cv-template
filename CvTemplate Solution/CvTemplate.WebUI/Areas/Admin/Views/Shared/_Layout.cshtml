@@ -182,16 +182,64 @@
                             <i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+                    @if (User.HasAccess("admin.users.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="users" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Users</span>
+                            </a>
+                        </li>
+                    }
                     @if (User.HasAccess("admin.personalsettings.index"))
                     {
                         <li>
                             <a aria-expanded="false" asp-controller="personalsettings" asp-action="index">
-                                <i class="icon icon-globe-2"></i><span class="nav-text">Personal Setting</span>
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Personal Settings</span>
                             </a>
                         </li>
                     }
-                        
-                    
+                    @if (User.HasAccess("admin.academicbackgrounds.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="academicbackgrounds" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">AcademicBackGrounds</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.attachments.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="attachments" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Attachments</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.bios.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="bios" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Bios</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.blogposts.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="blogposts" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Blog Posts</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.blogcategories.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="blogcategories" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Blog Categories</span>
+                            </a>
+                        </li>
+                    }
+
+
                 </ul>
             </div>
 
@@ -262,8 +310,10 @@
     <script src="~/admin/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
     <script src="~/admin/vendor/jquery.counterup/jquery.counterup.min.js"></script>
 
+    <script src="~/libs/sweetalert/sweetalert.min.js"></script>
     <script src="~/libs/toastr.js/toastr.min.js"></script>
     <script src="~/admin/js/dashboard/dashboard-1.js"></script>
+
     <script>
         toastr.options = {
             "closeButton": true,
@@ -283,7 +333,6 @@
             "hideMethod": "fadeOut"
         };
     </script>
-    <script src="~/libs/sweetalert/sweetalert.min.js"></script>
     <script>
         function removeEntity(id) {
 
@@ -319,8 +368,34 @@
                 })
             }
         });
-    }
+        }
+
+        $.ajaxSetup({
+            statusCode: {
+                200: function (response) {
+                    if (response.error == false && response.message.length > 0) {
+                        toastr.success(response.message, "Ugurludur!");
+                    }
+                },
+                400: function (response) {
+                    toastr.warning("Xetali sorgu!", "Diqqet!");
+                },
+                401: function (response) {
+                    toastr.warning("Evvelce sisteme daxil olmalisiniz!", "Diqqet!");
+                },
+                403: function (response) {
+                    toastr.warning("Bu emeliyyat ucun sizin selahiyyetiniz yoxdur!", "Diqqet!");
+                },
+                404: function (response) {
+                    toastr.warning("Melumat tapilmadi!", "Diqqet!");
+                },
+                500: function (response) {
+                    toastr.error("Server Xetasi", "Error!");
+                },
+            }
+        });
     </script>
+
     @RenderSection("addjs", required: false)
 
 </body>

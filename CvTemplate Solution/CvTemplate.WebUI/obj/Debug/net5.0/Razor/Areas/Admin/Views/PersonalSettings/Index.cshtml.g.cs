@@ -54,8 +54,43 @@ using CvTemplate.Application.Modules.Admin.PersonalSettingsModule;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using CvTemplate.Domain.Models.Entities.Membership;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using CvTemplate.Application.Modules.Admin.UsersModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using CvTemplate.Application.Modules.Admin.AcademicBackGroundModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using CvTemplate.Application.Modules.Admin.AttachmentModule;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\Areas\Admin\Views\_ViewImports.cshtml"
+using CvTemplate.Application.Modules.Admin.BioModule;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"97996794901b933f4f0cb1e0b61bd6e3ca26ab47", @"/Areas/Admin/Views/PersonalSettings/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7cf04bc8abc792f17de25d08d4eb0151884299b3", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b757568309c86178e1c524e6def10572defe1dcb", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_PersonalSettings_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PagedViewModel<PersonalSetting>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -121,7 +156,7 @@ using CvTemplate.Application.Modules.Admin.PersonalSettingsModule;
 #line hidden
 #nullable disable
             WriteLiteral("                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97996794901b933f4f0cb1e0b61bd6e3ca26ab478660", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97996794901b933f4f0cb1e0b61bd6e3ca26ab479967", async() => {
                 WriteLiteral("<i class=\"fa fa-plus \"></i> <span>Add New Size</span>");
             }
             );
@@ -157,7 +192,7 @@ using CvTemplate.Application.Modules.Admin.PersonalSettingsModule;
 #line hidden
 #nullable disable
             WriteLiteral("                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97996794901b933f4f0cb1e0b61bd6e3ca26ab4710787", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97996794901b933f4f0cb1e0b61bd6e3ca26ab4712094", async() => {
                 WriteLiteral("<i class=\"fa fa-trash\"></i> <span>Delete</span>");
             }
             );
@@ -260,7 +295,7 @@ WriteAttributeValue("", 2251, item.Id, 2251, 8, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97996794901b933f4f0cb1e0b61bd6e3ca26ab4716091", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97996794901b933f4f0cb1e0b61bd6e3ca26ab4717398", async() => {
                 WriteLiteral("<i class=\"fa fa-edit\" data-toggle=\"tooltip\" title=\"Edit\"></i>");
             }
             );
@@ -340,7 +375,7 @@ WriteAttributeValue("", 3030, item.Id, 3030, 8, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97996794901b933f4f0cb1e0b61bd6e3ca26ab4720617", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97996794901b933f4f0cb1e0b61bd6e3ca26ab4721924", async() => {
                 WriteLiteral("<i class=\"fa fa-eye\" data-toggle=\"tooltip\" title=\"Details\"></i>");
             }
             );

@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\libs\" />
     <Folder Include="wwwroot\uploads\files\" />
   </ItemGroup>
 

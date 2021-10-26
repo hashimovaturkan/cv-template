@@ -31,8 +31,8 @@ namespace CvTemplate.WebUI.Controllers
             this.db = db;
         }
 
-        [Authorize(Policy = "account.signin")]
-        [Route("/signin.html")]
+        //[Authorize(Policy = "account.signin")]
+        //[Route("signin.html")]
         public IActionResult SignIn()
         {
             return View();
@@ -40,8 +40,8 @@ namespace CvTemplate.WebUI.Controllers
 
 
         [HttpPost]
-        [Authorize(Policy = "account.signin")]
-        [Route("/signin.html")]
+        //[Authorize(Policy = "account.signin")]
+        //[Route("signin.html")]
         public async Task<IActionResult> SignIn(LoginFormModel user)
         {
             if (ModelState.IsValid)
@@ -88,15 +88,15 @@ namespace CvTemplate.WebUI.Controllers
             return View();
         }
 
-        [Route("/register.html")]
+        [Route("register.html")]
         public IActionResult Register()
         {
             return View();
         }
 
-        [Authorize(Policy = "account.register")]
+        //[Authorize(Policy = "account.register")]
         [HttpPost]
-        [Route("/register.html")]
+        [Route("register.html")]
         public async Task<IActionResult> Register(RegisterFormModel user)
         {
             if (ModelState.IsValid)
@@ -157,7 +157,7 @@ namespace CvTemplate.WebUI.Controllers
 
                     string token = userManager.GenerateEmailConfirmationTokenAsync(cvTemplateUser).Result;
                     string path = $"{Request.Scheme}://{Request.Host}/email-confirm?email={cvTemplateUser.Email}&token={token}";
-                    var sendMail = configuration.SendEmail(user.Email, "Riode email confirming", $"Please, use <a href={path}>this link</a> for confirming");
+                    var sendMail = configuration.SendEmail(user.Email, "CvTemplate email confirming", $"Please, use <a href={path}>this link</a> for confirming");
 
                     if (sendMail == false)
                     {
@@ -196,8 +196,8 @@ namespace CvTemplate.WebUI.Controllers
             });
         }
 
-        [Route("email-confirm")]
-        [Authorize(Policy = "account.emailconfirm")]
+        [Route("email-confirm.html")]
+        //[Authorize(Policy = "account.emailconfirm")]
         public async Task<IActionResult> EmailConfirm(string email, string token)
         {
             var user = userManager.FindByEmailAsync(email).Result;
@@ -231,15 +231,15 @@ namespace CvTemplate.WebUI.Controllers
         }
 
         
-        [Authorize(Policy = "account.logout")]
-        [Route("/logout.html")]
+        //[Authorize(Policy = "account.logout")]
+        [Route("logout.html")]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("About", "Home");
         }
 
-        [Route("/accessdenied.html")]
+        [Route("accessdenied.html")]
         public IActionResult AccessDeny()
         {
             return View();
