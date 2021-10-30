@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,7 @@ namespace CvTemplate.Application.Modules.Admin.BlogPostModule
         public DateTime? PublishedDate { get; set; }
         public string ImgUrl { get; set; }
         public int BlogCategoryId { get; set; }
+        public IFormFile file { get; set; }
+        public string fileTemp { get; set; }
     }
 }

@@ -63,8 +63,6 @@ namespace CvTemplate.Application.Modules.Admin.AcademicBackGroundModule
                                                                "wwwroot",
                                                                "uploads",
                                                                "images",
-                                                               "blog",
-                                                               "mask",
                                                                request.ImageUrl);
 
                         using (var stream = new FileStream(physicalFileName, FileMode.Create, FileAccess.Write))
@@ -78,8 +76,6 @@ namespace CvTemplate.Application.Modules.Admin.AcademicBackGroundModule
                                                               "wwwroot",
                                                               "uploads",
                                                               "images",
-                                                              "blog",
-                                                              "mask",
                                                               entity.ImageUrl));
                         }
 

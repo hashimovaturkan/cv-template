@@ -1,0 +1,222 @@
+﻿@model ContactPost
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="content-body">
+
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Hi, welcome back!</h4>
+                    <span class="ml-1">Email</span>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Email</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Read</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="email-left-box generic-width px-0 mb-5">
+                            <div class="p-0">
+                                <a href="email-compose.html" class="btn btn-primary btn-block">Compose</a>
+                            </div>
+                            <div class="mail-list mt-4">
+                                <a href="email-inbox.html" class="list-group-item active">
+                                    <i class="fa fa-inbox font-18 align-middle mr-2"></i> Inbox <span class="badge badge-primary badge-sm float-right">198</span>
+                                </a>
+                                <a href="javascript:void()" class="list-group-item">
+                                    <i class="fa fa-paper-plane font-18 align-middle mr-2"></i>Sent
+                                </a> <a href="javascript:void()" class="list-group-item">
+                                    <i class="fa fa-star font-18 align-middle mr-2"></i>Important <span class="badge badge-danger badge-sm text-white float-right">47</span>
+                                </a>
+                                <a href="javascript:void()" class="list-group-item">
+                                    <i class="mdi mdi-file-document-box font-18 align-middle mr-2"></i>Draft
+                                </a><a href="javascript:void()" class="list-group-item">
+                                    <i class="fa fa-trash font-18 align-middle mr-2"></i>Trash
+                                </a>
+                            </div>
+                            <div class="intro-title d-flex justify-content-between">
+                                <h5>Categories</h5>
+                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </div>
+                            <div class="mail-list mt-4">
+                                <a href="email-inbox.html" class="list-group-item">
+                                    <span class="icon-warning">
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                    </span>
+                                    Work
+                                </a>
+                                <a href="email-inbox.html" class="list-group-item">
+                                    <span class="icon-primary">
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                    </span>
+                                    Private
+                                </a>
+                                <a href="email-inbox.html" class="list-group-item">
+                                    <span class="icon-success">
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                    </span>
+                                    Support
+                                </a>
+                                <a href="email-inbox.html" class="list-group-item">
+                                    <span class="icon-dpink">
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                    </span>
+                                    Social
+                                </a>
+                            </div>
+                        </div>
+                        <div class="email-right-box ml-0 ml-sm-4 ml-sm-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="right-box-padding">
+                                        <div class="read-content">
+                                            <div class="media pt-3">
+                                                <div class="media-body">
+                                                    <h5 class="text-primary">@Model.Email</h5>
+                                                    <p class="mb-0">@Model.CreatedDate.ToString("MMM d, YYYY")</p>
+                                                </div>
+                                                <a href="javascript:void()" class="text-muted ">
+                                                    <i class="fa fa-reply"></i>
+                                                </a>
+                                                <a href="javascript:void()" class="text-muted ml-3">
+                                                    <i class="fa fa-long-arrow-right"></i>
+                                                </a>
+                                                <a href="javascript:void()" class="text-muted ml-3">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </div>
+                                            <hr>
+                                            <div class="media mb-4 mt-5">
+                                                <div class="media-body">
+                                                    <span class="pull-right">@Model.CreatedDate.ToString("MMM d, YYYY")</span>
+                                                </div>
+                                            </div>
+                                            <div class="read-content-body">
+                                                <p >Comment</p>
+                                                <p class="bold">@Model.Comment</p>
+                                                <h5 class="pt-3">@Model.Name</h5>
+                                                <hr>
+                                            </div>
+                                            <form class="form-group pt-3" method="POST" asp-controller="contactposts" asp-action="answer">
+                                                <textarea @(Model.AnswerDate !=  null ? "disable":"") name="Answer" class="w-100" id="write-email" cols="30" rows="5"  style="color:black;"></textarea>
+                                                <span asp-validation-for="Answer"></span>
+                                                <input type="hidden" asp-for="@Model.Id" />
+                                                @if (Model.AnswerDate == null)
+                                                {
+                                                    <div class="text-right">
+                                                        <button class="btn btn-primary btn-sl-sm mb-5">Send</button>
+                                                    </div>
+                                                }
+                                            </form>
+                                        </div>
+                                       
+                                        <div>
+                                            <a asp-action="Index">Back to List</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<h2>Details</h2>
+
+<div>
+    <h4>ContactPost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnswerDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerByUserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnswerByUserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedByUserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedByUserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeletedByUserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeletedByUserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeletedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeletedDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section addcss{
+<style>
+    .bold{
+        color:black;
+        font-weight:bold;
+    }
+</style>
+            }

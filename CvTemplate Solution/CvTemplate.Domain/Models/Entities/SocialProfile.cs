@@ -9,7 +9,7 @@ namespace CvTemplate.Domain.Models.Entities
     public class SocialProfile:BaseEntity
     {
         //lowercase kimi saxla dbde
-        public string Name { get; set; }
+        public string IconFileUrl { get; set; }
         public string IconUrl { get; set; }
     }
 }

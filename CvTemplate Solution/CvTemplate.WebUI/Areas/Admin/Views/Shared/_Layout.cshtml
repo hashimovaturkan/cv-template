@@ -226,7 +226,7 @@
                     {
                         <li>
                             <a aria-expanded="false" asp-controller="blogposts" asp-action="index">
-                                <i class="icon icon-globe-2"></i><span class="nav-text">Blog Posts</span>
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Blogs</span>
                             </a>
                         </li>
                     }
@@ -235,6 +235,62 @@
                         <li>
                             <a aria-expanded="false" asp-controller="blogcategories" asp-action="index">
                                 <i class="icon icon-globe-2"></i><span class="nav-text">Blog Categories</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.contactposts.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="contactposts" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Contact</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.experiences.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="experiences" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Experiences</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.jobcategories.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="jobcategories" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Job Categories</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.projects.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="projects" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Projects</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.services.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="services" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Services</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.skills.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="skills" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Skills</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.HasAccess("admin.socialprofiles.index"))
+                    {
+                        <li>
+                            <a aria-expanded="false" asp-controller="socialprofiles" asp-action="index">
+                                <i class="icon icon-globe-2"></i><span class="nav-text">Social Profiles</span>
                             </a>
                         </li>
                     }

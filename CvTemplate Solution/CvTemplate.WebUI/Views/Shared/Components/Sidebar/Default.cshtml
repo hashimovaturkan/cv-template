@@ -64,7 +64,7 @@
             <ul>
                 @foreach (var item in Model.SocialProfiles)
                 {
-                    <li> <a href="@item?.IconUrl"> <i class="fa fa-@item?.Name"></i></a> </li>
+                    <li> <a href="@item?.IconUrl"> <img src="~/uploads/images/@item.IconFileUrl" /> </a></li>
                 }
                 @*<li> <a href="#."> <i class="fa fa-google"></i></a> </li>
                     <li> <a href="#."> <i class="fa fa-twitter"></i></a> </li>

@@ -1,56 +1,54 @@
-﻿@model CvTemplate.Domain.Models.Entities.BlogCategory
+﻿@model BlogCategoryViewModel
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <h1>PersonalSetting Edit</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<h4>BlogCategory</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OrderBy" class="control-label"></label>
-                <input asp-for="OrderBy" class="form-control" />
-                <span asp-validation-for="OrderBy" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="CreatedByUserId" class="control-label"></label>
-                <input asp-for="CreatedByUserId" class="form-control" />
-                <span asp-validation-for="CreatedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeletedByUserId" class="control-label"></label>
-                <input asp-for="DeletedByUserId" class="form-control" />
-                <span asp-validation-for="DeletedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeletedDate" class="control-label"></label>
-                <input asp-for="DeletedDate" class="form-control" />
-                <span asp-validation-for="DeletedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section addcss{
+
+    <link href="~/libs/jquery-image-input/image-input.css" rel="stylesheet" />
+}
+
+
+@section addjs{
+    <script src="~/libs/ckeditor5/ckeditor.js"></script>
+    <script src="~/libs/jquery-image-input/jquery.image-input.js"></script>
+    <script>
+        $(document).ready(function () {
+            ClassicEditor
+                .create(document.querySelector('#Content'))
+                .catch(error => {
+                    console.error(error);
+                });
+        })
+    </script>
+}
+
+
+
+
 

@@ -1,76 +1,86 @@
-﻿@model CvTemplate.Domain.Models.Entities.BlogPost
+﻿@model BlogPostViewModel
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <h1>PersonalSetting Edit</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Content" class="control-label"></label>
+                        <textarea asp-for="Content" class="form-control" ></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PublishedDate" class="control-label"></label>
+                        <input asp-for="PublishedDate" class="form-control" />
+                        <span asp-validation-for="PublishedDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BlogCategoryId" class="control-label"></label>
+                        <select asp-for="BlogCategoryId" class="form-control" asp-items="ViewBag.BlogCategoryId"></select>
+                        <span asp-validation-for="BlogCategoryId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group ">
+                        <label class="control-label">
+                            Image
+                        </label>
+                        <label for="file" class="image-input" data-imgurl="/uploads/images/@Model.ImgUrl">
+                            <input name="fileTemp" value="@Model.ImgUrl" type="hidden" />
+                            <span>x</span>
+                        </label>
+                        <input name="file" id="file" type="file" accept="image/x-png,image/gif,image/jpeg" />
+                    </div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
 
-<h4>BlogPost</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Content" class="control-label"></label>
-                <input asp-for="Content" class="form-control" />
-                <span asp-validation-for="Content" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PublishedDate" class="control-label"></label>
-                <input asp-for="PublishedDate" class="form-control" />
-                <span asp-validation-for="PublishedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImgUrl" class="control-label"></label>
-                <input asp-for="ImgUrl" class="form-control" />
-                <span asp-validation-for="ImgUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BlogCategoryId" class="control-label"></label>
-                <select asp-for="BlogCategoryId" class="form-control" asp-items="ViewBag.BlogCategoryId"></select>
-                <span asp-validation-for="BlogCategoryId" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="CreatedByUserId" class="control-label"></label>
-                <input asp-for="CreatedByUserId" class="form-control" />
-                <span asp-validation-for="CreatedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeletedByUserId" class="control-label"></label>
-                <input asp-for="DeletedByUserId" class="form-control" />
-                <span asp-validation-for="DeletedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeletedDate" class="control-label"></label>
-                <input asp-for="DeletedDate" class="form-control" />
-                <span asp-validation-for="DeletedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section addcss{
+
+    <link href="~/libs/jquery-image-input/image-input.css" rel="stylesheet" />
+}
+
+
+@section addjs{
+    <script src="~/libs/ckeditor5/ckeditor.js"></script>
+    <script src="~/libs/jquery-image-input/jquery.image-input.js"></script>
+    <script>
+        $(document).ready(function () {
+            ClassicEditor
+                .create(document.querySelector('#Content'))
+                .catch(error => {
+                    console.error(error);
+                });
+        })
+    </script>
+}
+
+
 

@@ -1,0 +1,108 @@
+﻿@model ExperienceViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <h1>PersonalSetting Edit</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Location" class="control-label"></label>
+                        <input asp-for="Location" class="form-control" />
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Job" class="control-label"></label>
+                        <input asp-for="Job" class="form-control" />
+                        <span asp-validation-for="Job" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Company" class="control-label"></label>
+                        <input asp-for="Company" class="form-control" />
+                        <span asp-validation-for="Company" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Details" class="control-label"></label>
+                        <input asp-for="Details" class="form-control" />
+                        <span asp-validation-for="Details" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StartingDate" class="control-label"></label>
+                        <input asp-for="StartingDate" class="form-control" />
+                        <span asp-validation-for="StartingDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndingDate" class="control-label"></label>
+                        <input asp-for="EndingDate" class="form-control" />
+                        <span asp-validation-for="EndingDate" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group ">
+                        <label class="control-label">
+                            Image
+                        </label>
+                        <label for="file" class="image-input" data-imgurl="/uploads/images/@Model.ImageUrl">
+                            <input name="fileTemp" value="@Model.ImageUrl" type="hidden" />
+                            <span>x</span>
+                        </label>
+                        <input name="file" id="file" type="file" accept="image/x-png,image/gif,image/jpeg" />
+                    </div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+@section addcss{
+
+    <link href="~/libs/jquery-image-input/image-input.css" rel="stylesheet" />
+}
+
+
+@section addjs{
+    <script src="~/libs/ckeditor5/ckeditor.js"></script>
+    <script src="~/libs/jquery-image-input/jquery.image-input.js"></script>
+    <script>
+        $(document).ready(function () {
+            ClassicEditor
+                .create(document.querySelector('#Content'))
+                .catch(error => {
+                    console.error(error);
+                });
+        })
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

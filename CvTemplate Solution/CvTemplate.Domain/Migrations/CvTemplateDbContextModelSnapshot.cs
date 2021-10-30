@@ -783,10 +783,10 @@ namespace CvTemplate.Domain.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("IconUrl")
+                    b.Property<string>("IconFileUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("IconUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
