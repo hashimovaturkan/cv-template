@@ -32,9 +32,12 @@ namespace CvTemplate.WebUI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            var blog =await db.BlogPosts
-                .FirstOrDefaultAsync(s => s.DeletedByUserId == null && s.Id == id);
-
+            var blog = await db.BlogPosts
+                .Include(c => c.Comments)
+                .ThenInclude(c => c.CreatedByUser)
+                .Include(c => c.Comments)
+                .ThenInclude(c => c.Children)
+                .FirstOrDefaultAsync(s => s.DeletedByUserId == null && s.Id == id && s.PublishedDate != null);
             
             if(blog != null)
                 return View(blog);
@@ -45,6 +48,7 @@ namespace CvTemplate.WebUI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> PostComment(int? commentId, int postId, string comment)
         {
             if (string.IsNullOrWhiteSpace(comment))

@@ -400,3 +400,4 @@ E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Web
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\SocialProfiles\Details.cshtml.g.cs
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\SocialProfiles\Edit.cshtml.g.cs
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Areas\Admin\Views\SocialProfiles\Index.cshtml.g.cs
+E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.WebUI\obj\Debug\net5.0\Razor\Views\Blog\_Comment.cshtml.g.cs

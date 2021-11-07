@@ -4,14 +4,16 @@ using CvTemplate.Domain.Models.DataContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CvTemplate.Domain.Migrations
 {
     [DbContext(typeof(CvTemplateDbContext))]
-    partial class CvTemplateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211107122019_a")]
+    partial class a
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,7 +267,10 @@ namespace CvTemplate.Domain.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlogPostId")
+                    b.Property<long>("BlogPostId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("BlogPostId1")
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
@@ -283,18 +288,21 @@ namespace CvTemplate.Domain.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ParentId")
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("ParentId1")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BlogPostId");
+                    b.HasIndex("BlogPostId1");
 
                     b.HasIndex("CreatedByUserId");
 
-                    b.HasIndex("ParentId");
+                    b.HasIndex("ParentId1");
 
-                    b.ToTable("BlogPostComments");
+                    b.ToTable("BlogPostComment");
                 });
 
             modelBuilder.Entity("CvTemplate.Domain.Models.Entities.ContactPost", b =>
@@ -848,9 +856,7 @@ namespace CvTemplate.Domain.Migrations
                 {
                     b.HasOne("CvTemplate.Domain.Models.Entities.BlogPost", "BlogPost")
                         .WithMany("Comments")
-                        .HasForeignKey("BlogPostId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BlogPostId1");
 
                     b.HasOne("CvTemplate.Domain.Models.Entities.Membership.CvTemplateUser", "CreatedByUser")
                         .WithMany()
@@ -858,7 +864,7 @@ namespace CvTemplate.Domain.Migrations
 
                     b.HasOne("CvTemplate.Domain.Models.Entities.BlogPostComment", "Parent")
                         .WithMany("Children")
-                        .HasForeignKey("ParentId");
+                        .HasForeignKey("ParentId1");
 
                     b.Navigation("BlogPost");
 

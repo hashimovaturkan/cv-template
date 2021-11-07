@@ -15,6 +15,7 @@ namespace CvTemplate.Domain.Models.Entities
         public string ImgUrl { get; set; }
         public int BlogCategoryId { get; set; }
         public virtual BlogCategory BlogCategory { get; set; }
+        public virtual IEnumerable<BlogPostComment> Comments { get; set; }
         //public virtual ICollection<BlogImage> Images { get; set; }
     }
 }

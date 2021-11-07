@@ -2,18 +2,18 @@
 @{
     ViewData["Title"] = "Details";
 
-    //IEnumerable<BlogPostComment> GetComments(BlogPostComment parent)
-    //{
-    //    if (parent.ParentId != null)
-    //    {
-    //        yield return parent;
-    //    }
+    IEnumerable<BlogPostComment> GetComments(BlogPostComment parent)
+    {
+        if (parent.ParentId != null)
+        {
+            yield return parent;
+        }
 
-    //    foreach (var item in parent.Children.SelectMany(c => GetComments(c)))
-    //    {
-    //        yield return item;
-    //    }
-    //}
+        foreach (var item in parent.Children.SelectMany(c => GetComments(c)))
+        {
+            yield return item;
+        }
+    }
 }
 
 <div class="tab-content">
@@ -37,35 +37,7 @@
                 <li> <i class="fa fa-bookmark-o"></i>@ViewBag.Category</li>
                 <li>  </li>
             </ul>
-            <p>
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.<br>
-                <br>
-                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
-            </p>
-            <blockquote class="margin-top-30">“Sensibus oportere signiferumque id mea. At usu lucilius phaedrum, vix oratio epicurei ne. Eripuit conceptam sea cu, ius minim delectus euripidis cu. Probo nonumy gubergren id nec. In est probo ridens, his laoreet euripidis et.”</blockquote>
-            <h5 class="margin-top-30 margin-bottom-0">1914 translation by H. Rackham</h5>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,</p>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, literature, discovered the undoubtable source. <br>
-                        <br>
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words
-                    </p>
-                </div>
-                <div class="col-md-6"><img class="img-responsive margin-top-10" src="/uploads/images/post-img.jpg" alt=""></div>
-            </div>
-            <p>
-                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.<br>
-                <br>
-                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
-            </p>
-            <div class="auther-name text-center margin-top-50">
-                <h6 class="font-12px margin-top-20 margin-bottom-10">WHITE SHADOW WALKER</h6>
-                <span class="font-16px font-crimson font-italic">Writer/Personal blog</span>
-            </div>
-
-
+            @Html.Raw(Model.Content)
 
             <div class="next-prev">
                 <div class="row">
@@ -79,48 +51,53 @@
 
                 <!-- Main Heading -->
                 <div class="heading-side-bar margin-bottom-50 margin-top-100">
-                    <h4>Comment (37)</h4>
+                    <h4>@Model.Comments?.Count()</h4>
                 </div>
                 <ul>
-
-                    <!-- Comments -->
-                    <li class="margin-bottom-30">
-                        <div class="media">
-                            <div class="media-left">
-                                <div class="avatar"><img src="/uploads/images/avatar-1.jpg" alt=""></div>
-                            </div>
-                            <div class="media-body">
-                                <div class="a-com">
-                                    <span class="a-name text-color-primary">JAMMIE LANDING </span><span class="date">24.03.2015 at 10:21</span>
-                                    <p class="margin-top-20">
-                                        “Quando feugait duo ei, te erant corpora interpretaris eos. Illud accommodare vituperatoribus an mea. Erat mazim animal
-                                        at nam, eam te doctus evertitur, sed decore ornatus”
-                                    </p>
-                                    <a href="#." class="text-right"> REPLAY <i class="fa fa-reply"></i></a>
+                    @foreach (var item in Model?.Comments?.Where(a => a.ParentId == null))
+                    {
+                        <!-- Comments -->
+                        <li class="comment margin-bottom-30" id="#c-@item.Id" data-comment-id="@item.Id">
+                            <div class="media">
+                                <div class="media-left">
+                                    <div class="avatar"><img src="/uploads/images/avatar-1.jpg" alt=""></div>
+                                </div>
+                                <div class="media-body">
+                                    <div class="a-com">
+                                        <span class="a-name text-color-primary">@item.CreatedByUser</span><span class="date">@item.CreatedDate.ToShortDateString()</span>
+                                        <p class="margin-top-20">
+                                            @item.Comment
+                                        </p>
+                                        <a href="#" class="text-right btn-comment-reply"> REPLAY <i class="fa fa-reply"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
 
-                    <!-- Comments Replay -->
-                    <li class="com-reply">
-                        <div class="media">
-                            <div class="media-left">
-                                <div class="avatar"><img src="/uploads/images/avatar-2.jpg" alt=""></div>
-                            </div>
-                            <div class="media-body">
-                                <div class="a-com">
-                                    <span class="a-name ">JAMMIE LANDING </span><span class="date">24.03.2015 at 10:21</span>
-                                    <p class="margin-top-20">
-                                        “Quando feugait duo ei, te erant corpora interpretaris eos. Illud accommodare vituperatoribus an mea. Erat mazim animal
-                                        at nam, eam te doctus evertitur, sed decore ornatus”
-                                    </p>
-                                    <a href="#." class="text-right"> REPLAY <i class="fa fa-reply"></i></a>
+                        @foreach (var subComment in GetComments(item))
+                        {
+                            <!-- Comments Replay -->
+                            <li class="comment com-reply" id="#c-@subComment.Id" data-comment-id="@subComment.Id">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="avatar"><img src="/uploads/images/avatar-2.jpg" alt=""></div>
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="a-com">
+                                            <span class="a-name ">@subComment.CreatedByUser</span><span class="date">@subComment.CreatedDate.ToShortDateString()</span>
+                                            <a href="#c-@subComment.ParentId">@@@($"{subComment.Parent.CreatedByUser?.UserName}")</a> &nbsp; &nbsp;
+                                            <p class="margin-top-20">
+                                                @subComment.Comment
+                                            </p>
+                                            <a href="#" class="text-right btn-comment-reply"> REPLAY <i class="fa fa-reply"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="text-center more-comments"><a href="#.">MORE COMMENT <i class="fa fa-angle-down"></i></a></li>
+                            </li>
+                        }
+
+                    }
+
                 </ul>
 
                 <!-- Comments Form -->
@@ -129,34 +106,12 @@
                     <div class="heading-side-bar margin-bottom-50 margin-top-80">
                         <h4>Post to Reply</h4>
                     </div>
-                    <form>
+                    <form method="post" id="replyForm">
+                        <div id="replyToComment"></div>
+                        <input type="hidden" name="postId" value="@Model.Id" />
                         <ul class="row">
-                            <li class="col-sm-4">
-                                <label>
-                                    *NAME
-                                    <input class="form-control" type="text" placeholder="">
-                                </label>
-                            </li>
-                            <li class="col-sm-4">
-                                <label>
-                                    *EMAIL ADDRESS
-                                    <input class="form-control" type="text" placeholder="">
-                                </label>
-                            </li>
-                            <li class="col-sm-4">
-                                <label>
-                                    WEBSITE
-                                    <input class="form-control" type="text" placeholder="">
-                                </label>
-                            </li>
                             <li class="col-sm-12">
-                                <label>
-                                    SUBJECT
-                                    <input class="form-control" type="text" placeholder="">
-                                </label>
-                            </li>
-                            <li class="col-sm-12">
-                                <textarea placeholder="YOUR MESSAGE"></textarea>
+                                <textarea name="comment" placeholder="YOUR MESSAGE"></textarea>
                             </li>
                             <li class="col-sm-12">
                                 <button type="submit" class="btn btn-dark">POST COMMENT </button>
@@ -171,3 +126,99 @@
     </div>
 </div>
 
+@*@section addcss
+{
+    <style>
+        #replyToComment:not(:empty) {
+            border: 1px solid #1e1e1e;
+            max-width: 100%;
+            color: #999;
+            padding: 20px;
+            margin-left: 0;
+            position: relative;
+        }
+
+        #replyToComment li.comment-sub {
+            margin: 0;
+        }
+
+        #replyToComment .remove-selected-comment {
+            color: red;
+            position: absolute;
+            font-size: 2rem;
+            right: 8px;
+            top: 0;
+            padding: 10px;
+        }
+    </style>
+}*@
+@section addjs
+{
+    <script>
+        $(document).ready(function () {
+            $(".btn-comment-reply").click(function (e) {
+                e.preventDefault();
+
+                $("#replyToComment").html('<a href="javascript:removeReplySelected()" class="remove-selected-comment">&times;</a>').append($(e.currentTarget).closest(".comment").clone());
+
+            });
+
+            $("#replyForm").submit(function (e) {
+                e.preventDefault();
+
+                let formData = new FormData(e.currentTarget);
+                let toCommentId = $("#replyToComment li.comment").data("comment-id");
+
+                if (toCommentId != undefined) {
+                    formData.set("commentId", toCommentId);
+                }
+                console.log(formData);
+                $.ajax({
+                    url: '@Url.Action("PostComment")',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    dataType:"json",
+                    success: function (response) {
+                        if (response.error == false) {
+                            toastr.success(response.message, "Successfully!")
+                            location.reload();
+                        }
+                        else {
+                            toastr.error(response.message, 'Error!');
+                            location.reload();
+
+                        }
+                    },
+                    error: function (response) {
+                        if (response.statusText == "parsererror") {
+                            if (toCommentId != undefined) {
+                                $(response.responseText).insertAfter($(`#c-${toCommentId}`));
+
+                                $("#replyToComment").html('');
+                                e.currentTarget.reset();
+                                location.reload();
+                            }
+                            else {
+                                $("div.comments ul").append($(response.responseText));
+                                location.reload();
+                            }
+                            location.reload();
+                        }
+                        location.reload();
+                    }
+
+                })
+
+
+            })
+        })
+
+        function removeReplySelected() {
+            $("#replyToComment").html("");
+        }
+
+
+    </script>
+}
