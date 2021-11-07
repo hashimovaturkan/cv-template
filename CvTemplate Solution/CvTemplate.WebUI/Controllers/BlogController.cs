@@ -42,5 +42,67 @@ namespace CvTemplate.WebUI.Controllers
 
             return NotFound();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostComment(int? commentId, int postId, string comment)
+        {
+            if (string.IsNullOrWhiteSpace(comment))
+            {
+                return Json(new
+                {
+                    error = true,
+                    message = "Serh bos buraxila bilmez!"
+                });
+            }
+
+            if (postId < 1)
+            {
+                return Json(new
+                {
+                    error = true,
+                    message = "Post movcud deyil!"
+                });
+            }
+
+
+            var post = await db.BlogPosts.FirstOrDefaultAsync(c => c.Id == postId);
+
+
+            if (post == null)
+            {
+                return Json(new
+                {
+                    error = true,
+                    message = "Post movcud deyil!"
+                });
+            }
+
+            var commentModel = new BlogPostComment
+            {
+                ParentId = commentId,
+                BlogPostId = postId,
+                Comment = comment
+                //,CreatedByUserId= User.GetCurrentUserId()
+            };
+            if (commentId.HasValue && await db.BlogPostComments.AnyAsync(c => c.Id == commentId))
+                commentModel.ParentId = commentId;
+
+            await db.BlogPostComments.AddAsync(commentModel);
+            await db.SaveChangesAsync();
+
+
+
+            //return Json(new
+            //{
+            //    error = false,
+            //    message = "Elave edildi!"
+            //});
+            commentModel = await db.BlogPostComments
+                .Include(c => c.CreatedByUserId)
+                .Include(c => c.Parent)
+                .FirstOrDefaultAsync(c => c.Id == commentModel.Id);
+
+            return PartialView("_Comment", commentModel);
+        }
     }
 }

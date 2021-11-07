@@ -10,6 +10,7 @@ using CvTemplate.Domain.Models.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using CvTemplate.Application.Modules.Admin.PersonalSettingsModule;
+using CvTemplate.Application.Modules.Admin.UsersModule;
 
 namespace CvTemplate.WebUI.Areas.Admin.Controllers
 {
@@ -43,6 +44,9 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
                 return NotFound();
             }
 
+           var category = await mediator.Send(new UserChooseQuery());
+            ViewData["CvTemplateUserId"] = category.Where(b => b.Id == response.CvTemplateUserId).FirstOrDefault(b => b.DeletedByUserId == null).UserName;
+
             return View(response);
         }
 
@@ -74,6 +78,8 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["CvTemplateUserId"] = new SelectList(await mediator.Send(new UserChooseQuery()), "Id", "UserName", response.CvTemplateUserId);
 
             var vm = new PersonalSettingViewModel();
             vm.Id = response.Id;

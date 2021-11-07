@@ -9,6 +9,7 @@ using CvTemplate.Domain.Models.DataContexts;
 using CvTemplate.Domain.Models.Entities;
 using MediatR;
 using CvTemplate.Application.Modules.Admin.JobCategoryModule;
+using CvTemplate.Domain.Models.Enums;
 
 namespace CvTemplate.WebUI.Areas.Admin.Controllers
 {
@@ -48,6 +49,7 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
         //[Authorize(Policy = "admin.academicbackgrounds.create")]
         public async Task<IActionResult> Create()
         {
+            ViewData["SkillType"] = new SkillType();
             return View();
         }
 
@@ -72,6 +74,7 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ViewData["SkillType"] = new SkillType();
 
             var model = new JobCategoryViewModel();
             model.Id = response.Id;

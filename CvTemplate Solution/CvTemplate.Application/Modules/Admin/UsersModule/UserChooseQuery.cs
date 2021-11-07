@@ -1,5 +1,4 @@
 ﻿using CvTemplate.Domain.Models.DataContexts;
-using CvTemplate.Domain.Models.Entities;
 using CvTemplate.Domain.Models.Entities.Membership;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CvTemplate.Application.Modules.Admin.PersonalSettingsModule
+namespace CvTemplate.Application.Modules.Admin.UsersModule
 {
     public class UserChooseQuery : IRequest<List<CvTemplateUser>>
     {
@@ -24,8 +23,9 @@ namespace CvTemplate.Application.Modules.Admin.PersonalSettingsModule
 
             public async Task<List<CvTemplateUser>> Handle(UserChooseQuery request, CancellationToken cancellationToken)
             {
-                var users = await db.Users.ToListAsync();
-                return users;
+                var categories = await db.Users
+                                    .Where(c => c.DeletedByUserId == null).ToListAsync();
+                return categories;
             }
         }
     }

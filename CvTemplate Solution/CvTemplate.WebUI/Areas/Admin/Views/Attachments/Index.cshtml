@@ -10,12 +10,12 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2><b>Personal Setting </b></h2>
+                        <h2><b>Attachments </b></h2>
                     </div>
                     <div class="col-sm-6">
                         @if (User.HasAccess("admin.attachments.create"))
                         {
-                            <a asp-action="Create" class="btn btn-success"><i class="fa fa-plus "></i> <span>Add New Size</span></a>
+                            <a asp-action="Create" class="btn btn-success"><i class="fa fa-plus "></i> <span>Add New Attachment</span></a>
 
                         }
                         @if (User.HasAccess("admin.attachments.delete"))

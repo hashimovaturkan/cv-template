@@ -1,6 +1,19 @@
 ﻿@model BlogPost
 @{
     ViewData["Title"] = "Details";
+
+    //IEnumerable<BlogPostComment> GetComments(BlogPostComment parent)
+    //{
+    //    if (parent.ParentId != null)
+    //    {
+    //        yield return parent;
+    //    }
+
+    //    foreach (var item in parent.Children.SelectMany(c => GetComments(c)))
+    //    {
+    //        yield return item;
+    //    }
+    //}
 }
 
 <div class="tab-content">

@@ -28,7 +28,6 @@ namespace CvTemplate.Application.Modules.Admin.JobCategoryModule
             {
                 var model = db.JobCategories
                     .Where(s => s.DeletedByUserId == null)
-                    .Include(a=> a.SkillType)
                     .AsQueryable();
 
                 return new PagedViewModel<JobCategory>(model, request.PageIndex, request.PageSize);

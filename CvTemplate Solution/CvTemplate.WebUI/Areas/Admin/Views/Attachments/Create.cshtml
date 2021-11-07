@@ -17,7 +17,7 @@
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
-                    <div class="form-group ">
+                    @*<div class="form-group ">
                         <label class="control-label">
                             Attachment File
                         </label>
@@ -26,7 +26,13 @@
                             <span>x</span>
                         </label>
                         <input name="AttachmentFile" id="AttachmentFile" type="file" />
-                    </div>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="AttachmentFile" class="control-label"></label>
+                    <input asp-for="AttachmentFile" type="file" class="form-control" />
+                    <input name="fileTemp1" value="" type="hidden" />
+                    <span asp-validation-for="AttachmentFile" class="text-danger"></span>
+                </div>
                     <div class="form-group ">
                         <label class="control-label">
                             Icon image

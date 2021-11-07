@@ -9,6 +9,7 @@ using CvTemplate.Domain.Models.DataContexts;
 using CvTemplate.Domain.Models.Entities;
 using MediatR;
 using CvTemplate.Application.Modules.Admin.BlogPostModule;
+using CvTemplate.Application.Modules.Admin.BlogCategoryModule;
 
 namespace CvTemplate.WebUI.Areas.Admin.Controllers
 {
@@ -41,13 +42,15 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
+            var category = await mediator.Send(new BlogCategoryChooseQuery());
+            ViewData["BlogCategoryId"] = category.Where(b => b.Id == response.BlogCategoryId).FirstOrDefault(b => b.DeletedByUserId == null).Name;
             return View(response);
         }
 
         //[Authorize(Policy = "admin.academicbackgrounds.create")]
         public async Task<IActionResult> Create()
         {
+            ViewData["BlogCategoryId"] = new SelectList(await mediator.Send(new BlogCategoryChooseQuery()), "Id", "Name");
             return View();
         }
 
@@ -58,6 +61,7 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Create(BlogPostCreateCommand command)
         {
             var response = await mediator.Send(command);
+            ViewData["BlogCategoryId"] = new SelectList(await mediator.Send(new BlogCategoryChooseQuery()), "Id", "Name", command.BlogCategoryId);
             if (response > 0)
                 return RedirectToAction(nameof(Index));
 
@@ -72,6 +76,8 @@ namespace CvTemplate.WebUI.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["BlogCategoryId"] = new SelectList(await mediator.Send(new BlogCategoryChooseQuery()), "Id", "Name", response.BlogCategoryId);
 
             var model = new BlogPostViewModel();
             model.Id = response.Id;
