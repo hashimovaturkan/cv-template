@@ -1,4 +1,5 @@
 ﻿using CvTemplate.Domain.Models.DataContexts;
+using CvTemplate.Domain.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

@@ -39,6 +39,7 @@ namespace CvTemplate.Domain.Models.DataContexts
         public DbSet<Bio> Bios { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
+        public DbSet<BlogPostComment> BlogPostComments { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

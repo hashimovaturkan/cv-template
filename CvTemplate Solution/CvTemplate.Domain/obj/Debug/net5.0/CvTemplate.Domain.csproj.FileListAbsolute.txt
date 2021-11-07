@@ -31,7 +31,6 @@ E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Dom
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Domain\obj\Debug\net5.0\CvTemplate.Domain.AssemblyInfoInputs.cache
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Domain\obj\Debug\net5.0\CvTemplate.Domain.AssemblyInfo.cs
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Domain\obj\Debug\net5.0\CvTemplate.Domain.csproj.CoreCompileInputs.cache
-E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Domain\obj\Debug\net5.0\CvTemplate.Domain.csproj.CopyComplete
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Domain\obj\Debug\net5.0\CvTemplate.Domain.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Domain\obj\Debug\net5.0\ref\CvTemplate.Domain.dll
 E:\Lesson folder\Asp.Net Core MVC\cv-template\CvTemplate Solution\CvTemplate.Domain\obj\Debug\net5.0\CvTemplate.Domain.pdb
